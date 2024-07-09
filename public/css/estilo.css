@@ -1,0 +1,413 @@
+body{
+    background-color: #FEDF03;
+    font-family: arial;
+}
+
+/* Estilos para tablas */
+
+.contUno {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.contDos {
+    border: solid 1px rgb(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.contTres {
+    color: #fff;
+    font-size: 14px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+thead {
+    background:#03a4af;
+}
+
+th {
+    padding: 15px 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 10px;
+    border-bottom: solid 1px rgb(255, 255, 255, 0.2);
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background:#02cbda;
+}
+
+/*  fin de Estilos para tablas */
+
+
+/*Estilos para los botones tabla*/
+.lineEdit {
+    display: flex;
+    align-items: center;
+}
+
+.icon1 {
+    margin-right: 5px;
+    background-color: #fec303;
+    color:#0085B6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 2px 2px 2px black;
+}
+
+.icon2 {
+    margin-right: 5px;    
+    background-color: rgb(31, 104, 199);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.icon3 {
+    background-color: rgb(243, 77, 77);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.icon1:hover {
+    background-color: white;
+    color:rgb(31, 104, 199);
+}
+
+.icon2:hover {
+    background-color: white;
+    color: rgb(31, 104, 199);
+}
+
+.icon3:hover {
+    background-color: white;
+    color: rgb(243, 77, 77);
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+/*Fin de Estilos para los botones tabla*/
+
+/* Estilos para formulario */
+
+.formulario {
+    margin: 10px auto;
+    width: 40%;
+    border-radius: 10px;
+    border: 1px solid #02cbda;
+    box-shadow: 5px 5px 10px rgb(31, 66, 82);
+}
+
+.datoEstu {
+    text-align: center;
+    margin: 0 20px 10px 20px;
+
+}
+
+/* Fin de Estilos para formulario */
+
+
+header{
+    display: flex; /*Necesario para poder usar el justify-content*/
+    background-image: 
+    linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), /*crea el efecto de imagen oscurecida*/
+    url('../img/imagen.jpg');
+    background-size: cover; /*permite que la imagen se muestre a totalidad*/
+    background-position: center;
+    height: 300px;
+    margin-bottom: 4px;
+    justify-content: space-between; /*permite alinear los elementos del "header" a lado y lado*/
+    border-radius: 15px 15px 15px 15px; /*Permite redondear los bordes del elemento*/
+-moz-border-radius: 15px 15px 15px 15px;
+-webkit-border-radius: 15px 15px 15px 15px;
+border: 0px solid #000000;
+}
+
+.icono{     /*clase creada para poder organizar los iconos de las redes sociales*/
+    background-color: #8fe6f1;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-size: 45px;
+    box-shadow: 0 1 10px rgba(0,0,0,0.3);
+}
+
+.icono:hover{ /*acciones a realizar al pasar el mouse por encima de las redes sociales*/ 
+    background-color: #02cbda;
+    color: #ced2f7;
+    padding: 9px;
+}
+.bxl-facebook-circle {
+    color: #2586be;
+}
+.bxl-youtube {
+    color: #FF5733;
+}
+.bxl-instagram {
+    color: #F84A9E;
+}
+.bxl-twitter {
+    color: #fff;
+}
+
+.redes{
+    position: fixed; /*menu de redes fijo en la pantalla*/
+    top: 30px; /*orden y distancia donde se quiere el objeto fino con "position: fixed"*/
+    right: 20px;
+    padding: 5px; /*Espacio entre los iconos de las redes sociales y el margen de la imagen del header*/
+}
+
+#logo{
+    padding-top: 80px;
+    padding-left: 50px;
+}
+
+#login-registro{
+    margin: 220px 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sesion{
+    bottom: 10px;
+    background-color: #00B1BF;
+    height: 30px;
+    margin: 3px;
+    padding: 10px; 
+    color: #fff;
+    text-decoration: none; /*Elimina la linea de las anclas o enlaces*/
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sesion:hover{
+    background-color:  #02cbda;
+    padding: 11px;
+    color: #fff ;
+}
+
+.nav_menu{
+    background-color: #00B1BF;
+    color: #fff;
+    margin: 1px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.nav_menu:hover{
+    background-color: #02cbda;
+    padding: 11px; /*da la impresion de crecer al elemento cuando el mouse esta sobre el*/
+}
+
+#cupo{  /*id exclusivo para el boton de solicitar cupo*/
+    background-color: #FEDF03;
+    color: #060c61;
+    font-weight: bold; /*negrita al texto de esta ancla*/
+    margin: 1px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#cupo:hover{
+    background-color: #fec303;
+    color: #091286;
+    padding: 11px;
+}
+
+.menu{
+    display: flex; /*necesario para usar "justify-content"*/
+    padding: 10px;
+    justify-content: center; /*Alinear objetos al centro*/
+}
+hr {
+    border-color:#00B1BF;
+    border-style: dashed;
+}
+
+#content{
+    background-color: #0085B6;
+    padding: 10px;
+    width: 95%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+h2{
+    text-align: center;
+    color: #fff;
+}
+
+strong{ /*Para darle un formato distinto al título dentro del parrafo*/
+    color: #FEDF03;
+    font-size: 20px;
+    display: block; /*se utiliza para poder cambiar las propiedades de line a block*/
+    text-align: center;
+}
+
+.columna{
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 15px;
+    text-align: ju; /*Alineación y justificación de texto*/
+}
+/* estilo imagenes en pestañas */
+.imagen{
+    display: flex;
+    justify-content: center;
+}
+
+.imagen img{
+    width: 40%;
+}
+/* fin de estilo de imagenes en pestañas */
+
+/* estilo para el carrusel */
+.slide-box {
+    width: 50%;
+    height: auto;
+    margin: 50px auto 0;
+    overflow: hidden;
+}
+
+.slide-box ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s infinite alternate ease-in-out;
+}
+
+.slide-box ul li {
+    width: 100%;
+    list-style: none;
+}
+
+.slide-box img {
+    width: 100%;
+}
+
+@keyframes slide {
+    0% { margin-left: 0;}
+    20% { margin-left: 0;}
+
+    25% { margin-left: -100%;}
+    40% { margin-left: -100%;}
+
+    45% { margin-left: -200%;}
+    60% { margin-left: -200%;}
+
+    65% { margin-left: -300%;}
+    80% { margin-left: -300%;}
+
+    85% { margin-left: -300%;}
+    100% { margin-left: -300%;}
+}
+/* fin de estilo para carrusel */
+
+aside .pie {
+    text-align: center;
+    font-family: 'Arial';
+}
+
+.btn-wsp {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #0df053;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0 1 10px rgba(0,0,0,0.3);
+    z-index: 100;
+}
+
+.btn-wsp:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #0df053;
+}
+
+#videos{
+    display: flex; /*permite organizarlos uno al lado del otro*/
+    text-align: center;
+    padding: 20px;
+    justify-content: space-around; /*organiza los elemento en este espacio*/
+}
+
+.nav-boton{ /* indispensable para dar formato al boton desplegable de menu*/
+    background-color: #00B1BF;
+    padding: 9px;
+    margin: 1px;
+    color: #fff;
+    font-size: 15px;
+    border: 2px solid #02cbda;
+    display: none;/*oculta el boton menu en pantallan mas anchas*/
+}
+.nav-boton:hover{
+    background-color: #02cbda;
+    cursor: pointer;
+    padding: 10px;
+    color: #060c61;
+}
+
+
+@media (max-width: 1110px) {
+    #videos{
+        flex-direction: column; /*orientación vertical*/
+    }
+    .ilustracion{
+        margin: 0 auto; /*centrado*/
+        padding: 10px; /*permite separacion entre estos elementos*/
+    }
+    #logo {
+        width: 300px;
+    }
+}
+
+@media (max-width:585px){   /*necesario para organizar el menu y los elementos a partir de esta medida*/
+    .menu{
+        flex-direction: column; /*orientacion vertical*/
+        margin: 0 auto; /* menu centrado*/
+    }
+
+    #cupo{
+        text-align: center; /*texto de boton pedir cupo al centro*/
+    }
+
+    .nav_menu{
+        text-align: center;/* centra texto del menu*/
+    }
+    
+    .ocultar{
+        display: none;
+    }
+        
+    #logo{
+        width: 220px; /*ajusta tamaño del logo*/
+        padding-left: 10px;
+        padding-top: 120px;
+    }
+
+    .nav-boton{ 
+        display: inline-block; /*permite visualizar el boton menu ???*/
+    }
+}

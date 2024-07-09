@@ -1,10 +1,17 @@
 <?php
 
+use App\Http\Controllers\estudianteController;
+use App\Http\Controllers\galeriaController;
+use App\Http\Controllers\nivelesController;
+use App\Http\Controllers\nosotrosController;
+use App\Http\Controllers\noticiasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\solicitudController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::get('/dashboard', function () {
@@ -18,3 +25,23 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* rutas a vistas de la pagina */
+
+Route::get('/noticias', [noticiasController::class, 'noticias']);
+
+Route::get('/nosotros', [nosotrosController::class, 'nosotros']);
+
+Route::get('/galeria', [galeriaController::class, 'galeria']);
+
+Route::get('/niveles', [nivelesController::class, 'niveles']);
+
+Route::get('solicitud', [solicitudController::class, 'solicitud']);
+
+/* rutas tabla estudiantes */
+
+/* Route::get('/estudiantes', [estudianteController::class, 'estudiantes'])->name('estudiantes.datosEstudiante'); */
