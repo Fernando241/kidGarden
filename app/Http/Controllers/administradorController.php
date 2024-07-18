@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Estudiante;
 
-class estudianteController extends Controller
+class administradorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() //leer los registros
+    public function index()
     {
-        $estudiantes = Estudiante::all();
-        return view('estudiantes.index', compact('estudiantes'));
+        return view('PanelAdmin.panelAdmin');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() //abrir formulario para un nuevo registro
+    public function create()
     {
         //
     }
@@ -27,7 +25,7 @@ class estudianteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) //guardar en la base de datos los nuevos registros
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +33,7 @@ class estudianteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) //visualizar un solo registro
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +41,7 @@ class estudianteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) //para editar un registro
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +49,7 @@ class estudianteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) //para actualiza un registro
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +57,7 @@ class estudianteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) //para eliminar un registro
+    public function destroy(string $id)
     {
         //
     }

@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h2>Bienvenido</h2>
 @stop
 
 @section('content')
+    <p>Welcome to this beautiful admin panel.</p>
     {{-- Aquí es donde tengo que colocar todos los datos de la tabla correspondiente a cada pestaña o tabla --}}
     {{-- mostrar un formulario para mi tabla estudiante en un formulario usando los estilos de bootstrap --}}
 @stop

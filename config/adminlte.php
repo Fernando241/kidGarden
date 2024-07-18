@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -321,26 +321,30 @@ return [
             'can' => 'manage-blog', //autorización de roles
         ],
         //pestañas de mi menu
-        
+        [
+            'text' => 'Administrador',
+            'route' => 'administrador.index',
+            'icon' => 'fas fa-fw fa-home',
+        ],
         [
             'text' => 'Estudiantes',
-            'route' => 'home',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
-            'icon' => 'fas fa-fw fa-user',
+            'route' => 'estudiantes.index',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
+            'icon' => 'fas fa-fw fa-solid fa-user-graduate',
         ],
         [
             'text' => 'Cursos',
             'url' => '#',
-            'icon' => 'fas fa-fw fa-home',
+            'icon' => 'fas fa-fw fa-solid fa-chalkboard',
         ],
         [
             'text' => 'Docentes',
             'url' => '#',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-solid fa-user-tie',
         ],
         [
             'text' => 'Matriculas',
             'url' => '#',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
         ],
         /* [
             'text' => 'paginas',
@@ -497,7 +501,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
