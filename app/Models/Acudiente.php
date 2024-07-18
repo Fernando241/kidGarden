@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Acudiente extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idAcudiente';
 }

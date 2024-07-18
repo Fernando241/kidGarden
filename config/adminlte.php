@@ -15,8 +15,8 @@ return [
     */
 
     'title' => 'SIGE WEB',
-    'title_prefix' => 'Sige-Web | ',
-    'title_postfix' => '',
+    'title_prefix' => '',
+    'title_postfix' => ' | Sige-Web',
 
     /*
     |--------------------------------------------------------------------------
@@ -133,7 +133,7 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => true, //mostrar el nombre del usuario dentro del panel
     'usermenu_header' => true,
     'usermenu_header_class' => 'bg-info',
     'usermenu_image' => true,
@@ -240,7 +240,7 @@ return [
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
-    'right_sidebar_push' => true,
+    'right_sidebar_push' => false,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
     'right_sidebar_scrollbar_auto_hide' => 'l',
 
@@ -300,11 +300,11 @@ return [
             'text' => 'Buscar',
             'topnav_right' => true,
         ],
-        [
+        /* [
             'text' => 'Link 1',
             'url' => '#',
             'topnav_right' => true,
-        ],
+        ], */
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -318,22 +318,37 @@ return [
         [
             'text' => 'blog',
             'url' => 'admin/blog',
-            'can' => 'manage-blog', //autorización de rol
+            'can' => 'manage-blog', //autorización de roles
         ],
+        //pestañas de mi menu
+        
         [
             'text' => 'Estudiantes',
-            'route' => 'home',
-            'icon' => 'fas fa-fw fa-home',
-            'label' => 'Nuevo',
-            'label_color' => 'warning',
+            'route' => 'home',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Cursos',
+            'url' => '#',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Docentes',
+            'url' => '#',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Matriculas',
+            'url' => '#',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        /* [
             'text' => 'paginas',
             'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',
             'label' => 4,
             'label_color' => 'warning',
-        ],
+        ], */
         ['header' => 'Configuración de Cuenta'],
         [
             'text' => 'Perfil',
@@ -345,7 +360,7 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
+        /* [
             'text' => 'multinivel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
@@ -382,7 +397,7 @@ return [
                     'url' => '#',
                 ],
             ],
-        ],
+        ], */
         ['header' => 'labels'],
         [
             'text' => 'important',

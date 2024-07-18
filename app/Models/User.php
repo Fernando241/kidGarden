@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return 'Rectora';
+        return 'Administrador(a)';
     }
 
     public function adminlte_profile_url()

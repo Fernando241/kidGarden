@@ -17,10 +17,8 @@ return new class extends Migration
             $table->string('nombres', 50);
             $table->string('apellidos', 50);
             $table->string('telefono', 15);
-            $table->string('direccion', 50);
+            $table->string('direccion', 100);
             $table->string('correo', 50);
-           /*  $table->unsignedBigInteger('acudiente_id'); //campo para la llave foranea
-            $table->foreign('acudiente_id')->references('idAcudientes')->on('acudientes'); //asignación de la llave foranea al campo creado */
             $table->timestamps();
         });
     }

@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Estudiante extends Model
 {
     use HasFactory;
-/*     public function acudiente()
-{
-    return $this->belongsTo(Acudiente::class, 'acudiente_id', 'idAcudiente');
-} */
+    protected $primaryKey = 'idEstudiante';
 
 }

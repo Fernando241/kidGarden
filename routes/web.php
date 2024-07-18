@@ -42,6 +42,11 @@ Route::get('/niveles', [nivelesController::class, 'niveles']);
 
 Route::get('solicitud', [solicitudController::class, 'solicitud']);
 
-/* rutas tabla estudiantes */
+/*  rutas para llamar los datos de la tabla estudiantes */
 
-/* Route::get('/estudiantes', [estudianteController::class, 'estudiantes'])->name('estudiantes.datosEstudiante'); */
+Route::get('/estudiantes', [estudianteController::class, 'index']) ->name('estudiantes.index');
+
+Route::get('/estudiantes/create', [estudianteController::class, 'create'])->name('estudiantes.create');
+
+Route::post('/estudiantes', [estudianteController::class,'store'])->name('estudiantes.store');
+

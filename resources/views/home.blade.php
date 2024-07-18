@@ -3,19 +3,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Tablero</h1>
+<h2>Lista de estudiantes</h2>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">Bienvenido</div>
-        </div>
-        <div class="card-body">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sunt id exercitationem facere qui repellendus vel incidunt expedita assumenda, sapiente et nesciunt ut delectus a consectetur. Harum debitis explicabo qui.</p>
-        </div>
-    </div>
-
+    {{-- Aquí es donde tengo que colocar todos los datos de la tabla correspondiente a cada pestaña o tabla --}}
+    {{-- mostrar un formulario para mi tabla estudiante en un formulario usando los estilos de bootstrap --}}
 @stop
 
 @section('css')
@@ -24,5 +17,12 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+        Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
+    </script>
+    
 @stop
