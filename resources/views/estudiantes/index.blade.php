@@ -7,9 +7,27 @@
 @stop
 
 @section('content')
+{{-- agregar nuevo estudiante --}}
+<div class="card-header">
+    <a href="{{ route('estudiantes.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Añadir Estudiante</a>
+</div>
+
+{{-- barra de busqueda por parametros --}}
+<div class="card">
+    <div class="card-body">
+        <form method="GET" action="{{ route('estudiantes.index') }}">
+            <div class="input-group mb-3">
+                <input type="text" name="search" class="form-control" placeholder="Buscar por documento, nombre, etc." value="{{ request()->query('search') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </div>
+        </form>
+
+{{-- tabla para mostrar datos --}}
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped">
+            <table id="estudiantes" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -17,8 +35,6 @@
                         <th>Nombres</th>
                         <th>Apellidos</th>
                         <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Correo</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -30,27 +46,54 @@
                             <td>{{ $estudiante->nombres }}</td>
                             <td>{{ $estudiante->apellidos }}</td>
                             <td>{{ $estudiante->telefono }}</td>
-                            <td>{{ $estudiante->direccion }}</td>
-                            <td>{{ $estudiante->correo }}</td>
                             <td>
-                                <a href="{{ route('estudiante.edit', $estudiante)}}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('estudiantes.show', $estudiante) }}"><i class="fas fa-eye"></i></a>
                             </td>
                             <td>
-                                <i class="fas fa-trash"></i>
+                                <a href="{{ route('estudiantes.edit', $estudiante) }}"><i class="fas fa-edit"></i></a>
                             </td>
+                            <td>
+                                <form id="delete-form-{{ $estudiante->idEstudiante }}" action="{{ route('estudiantes.destroy', $estudiante->idEstudiante) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <a href="#" onclick="confirmDelete({{ $estudiante->idEstudiante }})">
+                                    <i class="fas fa-trash-alt" style="color: red;"></i>
+                                </a>
+                            </td>
+                            
+                            
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            {{-- paginador --}}
+            {{ $estudiantes->links() }}
         </div>
     </div>
 @stop
 
-@section('css')
-    {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
+
 @stop

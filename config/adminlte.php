@@ -193,7 +193,7 @@ return [
     'classes_body' => '',
     'classes_brand' => 'bg-white',
     'classes_brand_text' => '',
-    'classes_content_wrapper' => 'bg-warning',
+    'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
@@ -333,7 +333,7 @@ return [
         ],
         [
             'text' => 'Cursos',
-            'url' => '#',
+            'route' => 'cursos.index',
             'icon' => 'fas fa-fw fa-solid fa-chalkboard',
         ],
         [
@@ -501,7 +501,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',

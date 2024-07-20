@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\administradorController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\estudianteController;
 use App\Http\Controllers\galeriaController;
 use App\Http\Controllers\nivelesController;
@@ -45,19 +46,12 @@ Route::get('solicitud', [solicitudController::class, 'solicitud']);
 
 /*  rutas para llamar los datos de la tabla estudiantes */
 
-Route::get('/estudiantes', [estudianteController::class, 'index']) ->name('estudiantes.index');
+Route::resource('/estudiantes', estudianteController::class)->names('estudiantes');
 
-Route::put('/estudiante/edit', [estudianteController::class, 'edit']) ->name('estudiante.edit'); //revisar esta ruta bien
+//rutas para llamar datos de la tabla Cursos
 
-
-//rutas prueba para estudiante
-
-/* Route::resource('admin/estudiantes', estudianteController::class, 'index')->names('admin.Estudiantes'); */
+Route::resource('/cursos', CursoController::class)->names('cursos');
 
 //rutas para Administradores
 
 Route::get('/administrador', [administradorController::class, 'index']) ->name('administrador.index');
-//Route::put('/admin/estudiante/edit', [estudianteController::class, 'edit']) ->name('admin.estudiante.edit');
-
-//Route::get('/admin/estudiantes/create', [estudianteController::class, 'create'])->name('admin.estudiantes.create');
-
