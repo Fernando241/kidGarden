@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Docente')
+@section('title', 'nuevo docente')
 
 @section('content_header')
-    <h2>Editar Docente</h2>
+    <h2>Registrar Nuevo Docente</h2>
 @stop
 
 @section('content')
@@ -13,25 +13,24 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('docentes.update', $docente->idDocente) }}">
+            <form method="POST" action="{{ route('docentes.store') }}">
                 @csrf
-                @method('PUT')
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value=" {{ $docente->nombre }}">
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" value=" {{ $docente->telefono }}">
+                    <input type="text" class="form-control" id="telefono" name="telefono" required>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value=" {{ $docente->direccion }}">
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo" value=" {{ $docente->correo }}">
-                </div>    
+                    <input type="email" class="form-control" id="correo" name="correo" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>
@@ -45,5 +44,5 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    
 @stop

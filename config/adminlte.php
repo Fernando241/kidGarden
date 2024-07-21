@@ -322,7 +322,7 @@ return [
         ],
         //pestañas de mi menu
         [
-            'text' => 'Administrador',
+            'text' => 'Solicitudes',
             'route' => 'administrador.index',
             'icon' => 'fas fa-fw fa-home',
         ],
@@ -338,7 +338,7 @@ return [
         ],
         [
             'text' => 'Docentes',
-            'url' => '#',
+            'route' => 'docentes.index',
             'icon' => 'fas fa-fw fa-solid fa-user-tie',
         ],
         [

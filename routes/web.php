@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\administradorController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\estudianteController;
 use App\Http\Controllers\galeriaController;
 use App\Http\Controllers\nivelesController;
@@ -51,6 +52,10 @@ Route::resource('/estudiantes', estudianteController::class)->names('estudiantes
 //rutas para llamar datos de la tabla Cursos
 
 Route::resource('/cursos', CursoController::class)->names('cursos');
+
+//rutas para Docentes
+
+Route::resource('/docentes', DocenteController::class)->names('docentes');
 
 //rutas para Administradores
 

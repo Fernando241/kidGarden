@@ -13,8 +13,9 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('estudiantes.store') }}">
+            <form method="POST" action="{{ route('estudiantes.update', $estudiante->idEstudiante) }}">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="documento">Documento:</label>
                     <input type="text" class="form-control" id="documento" name="documento" value=" {{ $estudiante->documento }}">

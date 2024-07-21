@@ -41,7 +41,7 @@ class estudianteController extends Controller
         $estudiante->correo = $request->input('correo');
         $estudiante->save();
         
-        return redirect()->route('estudiantes.index')->with('success', 'Estudiante creado exitosamente.');
+        return redirect()->route('estudiantes.index');
     }
 
 
@@ -61,6 +61,16 @@ class estudianteController extends Controller
 
     public function update(Request $request, $id) //para actualiza un registro
     {
+        // Validar los datos del formulario
+        $request->validate([
+            'documento' => 'required',
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'telefono' => 'required',
+            'direccion' => 'required',
+            'correo' => 'required|email',
+        ]);
+
         $estudiante = Estudiante::find($id);
         $estudiante->documento = $request->input('documento');
         $estudiante->nombres = $request->input('nombres');
