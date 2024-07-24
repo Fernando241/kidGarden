@@ -5,6 +5,9 @@
 @section('Titulo', 'Inicio')
 
 @section('contenido')
+
+
+
 <p><strong>Bienvenidos a Genios del Saber:<br>Donde los Pequeños Descubren su Grandeza</strong></p>
 <div id="parrafos"> <!--contenedor padre del contenido informativo de la página, creado pensando si necesito trabajar su contenido con "flex"-->
     <p class="columna"> <!--Clase creada para darle un uso especial a este contenido-->
@@ -37,4 +40,8 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0300822822824!2d-74.18233872582623!3d4.588624242620636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f608b799fd7%3A0xed7ba6c5f8159c33!2sJardin%20Infantil%20Caminos%20de%20la%20Vida!5e0!3m2!1ses-419!2sco!4v1695956730423!5m2!1ses-419!2sco" class="ilustracion" width="320" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 </div>
+@endsection
+
+@section('js')
+
 @endsection

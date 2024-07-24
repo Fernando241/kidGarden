@@ -6,7 +6,8 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/estilo.css')}}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -29,23 +30,21 @@
             @endif
 
             @if (Route::has('register'))
-            <a href=" {{ url('register')}} " class="sesion">Registrarse</a> 
+            <a href=" {{ route('register')}} " class="sesion">Registrarse</a> 
             @endif
-            
         </div>
     
     </header>
     <div id="content"> <!--Contenedor para crear un caja dentro del body-->
         <section>
             <div class="menu"> <!--clase padre del menu-->
-                <a href=" {{ url('/solicitud')}} " id="cupo">Solicitar Cupo</a> <!--Se le agrego un id diferente para darle propiedades distintas a las demán anclas-->
+                <a href=" {{ route('solicituds.create') }} " id="cupo">Solicitar Cupo</a> <!--Se le agrego un id diferente para darle propiedades distintas a las demán anclas-->
                 <button class="nav-boton" onclick="accion()">Menu</button> <!--boton que aparece en pantallas pequeñas y se configura en JavaScrip-->
                 <a href=" {{ url('/')}} " class="nav_menu ocultar">Inicio</a>
                 <a href=" {{ url('/nosotros') }} " class="nav_menu ocultar">Nosotros</a>
                 <a href=" {{ url('/galeria')}} " class="nav_menu ocultar">Galeria</a>
                 <a href=" {{ url('/noticias')}} " class="nav_menu ocultar">Noticias</a>
                 <a href=" {{ url('/niveles')}} " class="nav_menu ocultar">Niveles</a>
-                <a href=" {{ url('/estudiantes')}} " class="nav_menu ocultar">Estudiantes</a>
             </div>
             <hr>
         </section> <!--Sección para destinar al contenido informativo de la página-->

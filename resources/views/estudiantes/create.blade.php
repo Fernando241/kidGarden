@@ -13,7 +13,7 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('estudiantes.store') }}">
+            <form method="POST" action="{{ route('estudiantes.store') }}" id="solicitudForm">
                 @csrf
                 <div class="form-group">
                     <label for="documento">Documento:</label>
@@ -52,10 +52,23 @@
 @stop
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function () {
-            // Marcar el menú activo
-            $('#menu_estudiantes').addClass('active');
-        });
+        document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Su registro a sido exitoso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        // Enviar el formulario después de mostrar la alerta
+                        event.target.submit();
+                    }
+                });
+            });
     </script>
 @stop

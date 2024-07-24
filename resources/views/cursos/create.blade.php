@@ -2,7 +2,11 @@
 
 @section('title', 'Crear Curso')
 
-
+@section('content_header')
+    <div class="text-right">
+        <a href="{{ route('cursos.index') }}" class="btn btn-primary">Volver</a>
+    </div>
+@stop
 
 @section('content')
 
@@ -12,7 +16,7 @@
                 Crear Nuevo Curso
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('cursos.store') }}">
+                <form method="POST" action="{{ route('cursos.store') }}" id="solicitudForm">
                     @csrf
 
                     <div class="form-group">
@@ -41,9 +45,9 @@
                         <label for="docente">Docente Asignado</label>
                         <select class="form-control" id="docente" name="docente_id" required>
                             <option value="">Seleccione un docente</option>
-                            {{-- @foreach ($docentes as $docente)
-                                <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
-                            @endforeach --}}
+                            @foreach ($docentes as $docente)
+                                <option value="{{ $docente->idDocente }}">{{ $docente->nombre }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -86,4 +90,26 @@
         </div>
     </div>
 
+@stop
+
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Su solicitud a sido enviada con exito!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        // Enviar el formulario después de mostrar la alerta
+                        event.target.submit();
+                    }
+                });
+            });
+    </script>
 @stop

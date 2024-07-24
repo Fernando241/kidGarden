@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso;
+use App\Models\Docente;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -22,7 +23,8 @@ class CursoController extends Controller
 
     public function create()
     {
-        return view('cursos.create');
+        $docentes = Docente::all();
+        return view('cursos.create', compact('docentes'));
     }
 
 
@@ -39,9 +41,10 @@ class CursoController extends Controller
     }
 
 
-    public function edit(Curso $curso)
+    public function edit($idCurso)
     {
-        //
+        $curso = Curso::find($idCurso);
+        return view('cursos.edit', compact('curso'));
     }
 
 

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Valor;
 use Illuminate\Http\Request;
 
-class administradorController extends Controller
+class ValorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        return view('PanelAdmin.panelAdmin');
+        $valor = Valor::all();
+        return view('valores.index', compact('valor'));
     }
 
     /**
@@ -33,7 +33,7 @@ class administradorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -41,23 +41,32 @@ class administradorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $valor = Valor::find($id);
+        return view('valores.edit', compact('valor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'valor' => 'required',
+        ]);
+
+        $valor = Valor::find($id);
+        $valor->valor = $request->get('valor');
+        $valor->save();
+
+        return redirect()->route('valores.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
     }

@@ -322,29 +322,40 @@ return [
         ],
         //pestañas de mi menu
         [
-            'text' => 'Solicitudes',
-            'route' => 'administrador.index',
+            'text' => 'Panel Administrativo',
+            'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-home',
+            'active' => ['dashboard', 'valores*', 'pagos*', 'bancos*', 'agregar-admin*'],
+        ],
+        [
+            'text' => 'Solicitudes',
+            'route' => 'solicituds.index',
+            'icon' => 'fas fa-fw fa-solid fa-address-card',
+            'active' => ['solicituds*'],
         ],
         [
             'text' => 'Estudiantes',
             'route' => 'estudiantes.index',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
             'icon' => 'fas fa-fw fa-solid fa-user-graduate',
+            'active' => ['estudiantes*'],
         ],
         [
             'text' => 'Cursos',
             'route' => 'cursos.index',
             'icon' => 'fas fa-fw fa-solid fa-chalkboard',
+            'active' => ['cursos*'],
         ],
         [
             'text' => 'Docentes',
             'route' => 'docentes.index',
             'icon' => 'fas fa-fw fa-solid fa-user-tie',
+            'active' => ['docentes*'],
         ],
         [
             'text' => 'Matriculas',
             'url' => '#',
             'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
+            'active' => ['matriculas*'],
         ],
         /* [
             'text' => 'paginas',
@@ -402,7 +413,7 @@ return [
                 ],
             ],
         ], */
-        ['header' => 'labels'],
+        /* ['header' => 'labels'],
         [
             'text' => 'important',
             'icon_color' => 'red',
@@ -417,7 +428,7 @@ return [
             'text' => 'information',
             'icon_color' => 'cyan',
             'url' => '#',
-        ],
+        ], */
     ],
 
     /*

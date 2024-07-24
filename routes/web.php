@@ -1,21 +1,22 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\administradorController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\estudianteController;
 use App\Http\Controllers\galeriaController;
+use App\Http\Controllers\inicioController;
 use App\Http\Controllers\nivelesController;
 use App\Http\Controllers\nosotrosController;
 use App\Http\Controllers\noticiasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\solicitudController;
+use App\Http\Controllers\ValorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('inicio');
-});
+Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
 Route::get('/dashboard', function () {
     return view('home');
@@ -43,7 +44,9 @@ Route::get('/galeria', [galeriaController::class, 'galeria']);
 
 Route::get('/niveles', [nivelesController::class, 'niveles']);
 
-Route::get('solicitud', [solicitudController::class, 'solicitud']);
+/* rutas para llamar los datos de las solicitudes*/
+
+Route::resource('/solicituds', solicitudController::class)->names('solicituds');
 
 /*  rutas para llamar los datos de la tabla estudiantes */
 
@@ -57,6 +60,11 @@ Route::resource('/cursos', CursoController::class)->names('cursos');
 
 Route::resource('/docentes', DocenteController::class)->names('docentes');
 
-//rutas para Administradores
+//rutas para el Panel Administrativo
 
-Route::get('/administrador', [administradorController::class, 'index']) ->name('administrador.index');
+Route::resource('/valores', ValorController::class)->names('valores');
+
+Route::get('/pagos', [adminController::class, 'pagos'])->name('pagos');
+Route::get('/bancos', [adminController::class, 'bancos'])->name('bancos');
+Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin');
+

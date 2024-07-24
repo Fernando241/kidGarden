@@ -13,7 +13,7 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('estudiantes.update', $estudiante->idEstudiante) }}">
+            <form method="POST" action="{{ route('estudiantes.update', $estudiante->idEstudiante) }}" id="solicitudForm">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -53,5 +53,23 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
-@stop
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registro actualizado con exito!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        // Enviar el formulario después de mostrar la alerta
+                        event.target.submit();
+                    }
+                });
+            });
+    </script>
+@stopp

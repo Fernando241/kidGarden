@@ -3,7 +3,10 @@
 @section('title', 'Editar Docente')
 
 @section('content_header')
-    <h2>Editar Docente</h2>
+    <h2>Editar Curso</h2>
+    <div class="text-right">
+        <a href="{{ route('cursos.index') }}" class="btn btn-primary">Volver</a>
+    </div>
 @stop
 
 @section('content')
@@ -13,11 +16,11 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('docentes.update', $docente->idDocente) }}">
+            <form method="POST" action="{{ route('docentes.update', $docente->idDocente) }}" id="solicitudForm">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Nombre Completo:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value=" {{ $docente->nombre }}">
                 </div>
                 <div class="form-group">
@@ -45,5 +48,23 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registro actualizado con exito!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        // Enviar el formulario después de mostrar la alerta
+                        event.target.submit();
+                    }
+                });
+            });
+    </script>
 @stop

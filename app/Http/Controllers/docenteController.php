@@ -32,7 +32,7 @@ class DocenteController extends Controller
     public function store(Request $request)
     {
         $docente = new Docente();
-        $docente->nombre = $request->input('documento');
+        $docente->nombre = $request->input('nombre');
         $docente->telefono = $request->input('telefono');
         $docente->direccion = $request->input('direccion');
         $docente->correo = $request->input('correo');

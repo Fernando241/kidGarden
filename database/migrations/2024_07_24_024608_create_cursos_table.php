@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id('idCurso');
             $table->string('grado', 20);
             $table->string('seccion', 2);
+            $table->unsignedBigInteger('docente_id');
             $table->timestamps();
+
+            $table->foreign('docente_id')->references('idDocente')->on('docentes')->onDelete('cascade');
         });
     }
 

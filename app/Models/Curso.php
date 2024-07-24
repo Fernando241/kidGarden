@@ -9,4 +9,9 @@ class Curso extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idCurso';
+
+    public function docente()
+    {
+        return $this->belongsTo(Docente::class, 'docente_id');
+    }
 }
