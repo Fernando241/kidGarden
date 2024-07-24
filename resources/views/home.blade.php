@@ -4,7 +4,7 @@
 
 @section('content_header')
 <div class="card">
-    <h3>Bienvenido {{ auth()->user()->name }}!</h3>
+    <br><h4>Bienvenido {{ auth()->user()->name }}!</h4><br>
 </div>
 
 @stop
