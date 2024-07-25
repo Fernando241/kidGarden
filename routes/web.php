@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\administradorController;
+use App\Http\Controllers\BancoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\estudianteController;
@@ -64,7 +65,9 @@ Route::resource('/docentes', DocenteController::class)->names('docentes');
 
 Route::resource('/valores', ValorController::class)->names('valores');
 
+Route::resource('/bancos', BancoController::class)->names('bancos');
+
+
 Route::get('/pagos', [adminController::class, 'pagos'])->name('pagos');
-Route::get('/bancos', [adminController::class, 'bancos'])->name('bancos');
 Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin');
 

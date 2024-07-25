@@ -41,7 +41,7 @@
                     <br><h4 class="card-title">Bancos</h4>
                     <img src="{{ asset('img/bancos.jpg') }}" class="card-img-top" alt="Bancos">
                     <div class="card-body">
-                        <a href="{{ route('bancos') }}" class="btn btn-primary">Ver más</a>
+                        <a href="{{ route('bancos.index') }}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>

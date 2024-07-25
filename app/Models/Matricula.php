@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Matricula extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'idMatricula';
 }

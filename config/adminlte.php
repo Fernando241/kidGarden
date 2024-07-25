@@ -325,7 +325,7 @@ return [
             'text' => 'Panel Administrativo',
             'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-home',
-            'active' => ['dashboard', 'valores*', 'pagos*', 'bancos*', 'agregar-admin*'],
+            'active' => ['dashboard', 'home', 'valores*', 'pagos*', 'bancos*', 'agregar-admin*'],
         ],
         [
             'text' => 'Solicitudes',

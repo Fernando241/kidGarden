@@ -12,7 +12,8 @@ class BancoController extends Controller
      */
     public function index()
     {
-        //
+        $bancos = Banco::all();
+        return view('bancos.index', compact('bancos'));
     }
 
     /**
@@ -20,7 +21,8 @@ class BancoController extends Controller
      */
     public function create()
     {
-        //
+        $bancos = Banco::all();
+        return view('bancos.create', compact('bancos'));
     }
 
     /**
@@ -28,7 +30,13 @@ class BancoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $banco = new Banco();
+        $banco->banco = $request->input('banco');
+        $banco->codigo = $request->input('codigo');
+        $banco->telefono = $request->input('telefono');
+        $banco->save();
+
+        return redirect()->route('bancos.index');
     }
 
     /**
@@ -42,24 +50,35 @@ class BancoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Banco $banco)
+    public function edit($id)
     {
-        //
+        $banco = Banco::find($id);
+        return view('bancos.edit', compact('banco'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Banco $banco)
+    public function update(Request $request, $id)
     {
-        //
+        $banco = Banco::find($id);
+        $banco->banco = $request->input('banco');
+        $banco->codigo = $request->input('codigo');
+        $banco->telefono = $request->input('telefono');
+        $banco->save();
+
+        return redirect()->route('bancos.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Banco $banco)
+    public function destroy($id)
     {
-        //
+        $banco = Banco::fird($id);
+        if ($banco) {
+            $banco->delete();
+        }
+        return redirect()->route('bancos.index');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Noticia;
+use App\Models\Matricula;
 use Illuminate\Http\Request;
 
-class NoticiaController extends Controller
+class MatriculaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class NoticiaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Noticia $noticia)
+    public function show(Matricula $matricula)
     {
         //
     }
@@ -42,7 +42,7 @@ class NoticiaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Noticia $noticia)
+    public function edit(Matricula $matricula)
     {
         //
     }
@@ -50,7 +50,7 @@ class NoticiaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Noticia $noticia)
+    public function update(Request $request, Matricula $matricula)
     {
         //
     }
@@ -58,7 +58,7 @@ class NoticiaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Noticia $noticia)
+    public function destroy(Matricula $matricula)
     {
         //
     }

@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Galeria extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'idGaleria';
 }
