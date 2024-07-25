@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idEstudiante');
-            $table->unsignedBigInteger('idGrado');
+            $table->unsignedBigInteger('estudiante_id');
+            $table->unsignedBigInteger('curso_id');
             $table->timestamps();
+
+            $table->foreign('estudiante_id')->references('idEstudiante')->on('estudiantes')->onDelete('cascade');
+            $table->foreign('curso_id')->references('idCurso')->on('cursos')->onDelete('cascade');
         });
     }
 

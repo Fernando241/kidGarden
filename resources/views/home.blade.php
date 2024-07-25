@@ -4,7 +4,9 @@
 
 @section('content_header')
 <div class="card">
-    <br><h4>Bienvenido {{ auth()->user()->name }}!</h4><br>
+    <br>
+    <h3 class="text-primary">Panel Admininistrativo del <strong class="text-blue">Jardín Infantil Genios Del Saber</strong></h3>
+    <h5>Bienvenido {{ auth()->user()->name }}!</h5><br>
 </div>
 
 @stop

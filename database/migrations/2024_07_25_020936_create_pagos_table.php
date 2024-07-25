@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idMatricula');
-            $table->unsignedBigInteger('idValores');
+            $table->unsignedBigInteger('matricula_id');
+            $table->unsignedBigInteger('valores_id');
             $table->timestamps();
+
+            $table->foreign('matricula_id')->references('id')->on('matriculas');
+            $table->foreign('valores_id')->references('id')->on('valores');
         });
     }
 
