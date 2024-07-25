@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="card" style="text-align: center">
-        <h1 style="text-align: center">Valores Educativos</h1><br>
+        <h1  class="text-primary" style="text-align: center">Valores Educativos</h1><br>
         <p>En esta sección podras ver y editar los valores Educativos que se van a aplicar al año vigente</p>
     </div>
 @stop

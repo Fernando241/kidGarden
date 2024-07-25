@@ -68,10 +68,28 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Aquí debo incluir una tabla con la lista de estudiantes disponibles -->
-                                            <!-- Necesito implementar lógica adicional para seleccionar y agregar estudiantes -->
-                                            <!-- Por ejemplo, checkboxes o botones de añadir -->
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>Apellidos</th>
+                                                        <th>Seleccionar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($estudiantes as $estudiante)
+                                                        <tr>
+                                                            <td>{{ $estudiante->nombres }}</td>
+                                                            <td>{{ $estudiante->apellidos }}</td>
+                                                            <td>
+                                                                <input type="checkbox" name="estudiantes_seleccionados[]" value="{{ $estudiante->idEstudiante }}">
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                             <button type="button" class="btn btn-primary">Guardar Estudiantes</button>
@@ -84,6 +102,9 @@
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary text-right">Guardar Curso</button>
                     </div>
+                    
+                    {{-- campo oculto para almacenar los estudiantes selecionandos antes de guardar definitivamente los ajustes del curso --}}
+                    <input type="hidden" name="estudiantes_seleccionados" value="{{ json_encode(session('estudiantes_seleccionados')) }}">
                     
                 </form>
             </div>

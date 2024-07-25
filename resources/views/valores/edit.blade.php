@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="valor">Valor:</label>
-                    <input type="text" class="form-control" id="valor" name="valor" required value="{{ number_format($valor->valor, 0, ',', '.') }}">
+                    <input type="text" class="form-control" id="valor" name="valor" required value="{{ $valor->valor }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>

@@ -37,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* rutas a vistas de la pagina */
 
-Route::get('/noticias', [noticiasController::class, 'noticias']);
+/* Route::get('/noticias', [noticiasController::class, 'noticias']); */
 
 Route::get('/nosotros', [nosotrosController::class, 'nosotros']);
 
@@ -56,6 +56,7 @@ Route::resource('/estudiantes', estudianteController::class)->names('estudiantes
 //rutas para llamar datos de la tabla Cursos
 
 Route::resource('/cursos', CursoController::class)->names('cursos');
+Route::post('/cursos/asignar-estudiantes', 'CursoController@asignarEstudiantes')->name('cursos.asignarEstudiantes');
 
 //rutas para Docentes
 

@@ -12,6 +12,6 @@ class EstudianteCurso extends Model
     //relacion a la tabla cursos
     public function cursos()
     {
-        return $this->belongsToMany(Curso::class, 'alumno_curso');
+        return $this->belongsToMany(Curso::class);
     }
 }

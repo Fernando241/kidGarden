@@ -13,6 +13,6 @@ class Docente extends Model
 
     public function cursos()
     {
-        return $this->hasMany(Curso::class, 'docente_id');
+        return $this->hasMany(Curso::class,);
     }
 }

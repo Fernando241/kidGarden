@@ -17,7 +17,8 @@
             <div class="card-body">
                 <h5 class="card-title">Grado: {{ $curso->grado }}</h5>
                 <p class="card-text">Sección: {{ $curso->seccion }}</p>
-                <p class="card-text">Docente: {{-- {{ $curso->docente }} --}}</p>
+                <p class="card-text">Docente: {{ $curso->docente_id }}</p>
+
 
                 <h5>Estudiantes Asignados: </h5>
                 <table class="table">
