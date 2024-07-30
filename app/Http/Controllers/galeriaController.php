@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GaleriaController extends Controller
 {
+
+    public function galeria()
+    {
+        return view('galeria');
+    }
     /**
      * Display a listing of the resource.
      */

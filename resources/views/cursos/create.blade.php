@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="docente">Docente Asignado</label>
+                        <label for="docente">Docente</label>
                         <select class="form-control" id="docente" name="docente_id" required>
                             <option value="">Seleccione un docente</option>
                             @foreach ($docentes as $docente)

@@ -328,6 +328,12 @@ return [
             'active' => ['dashboard', 'home', 'valores*', 'pagos*', 'bancos*', 'agregar-admin*'],
         ],
         [
+            'text' => 'Usuarios',
+            'route' => 'admin.users.index',
+            'icon' => 'fas fa-fw fa-solid fa-users',
+            'active' => ['users*'],
+        ],
+        [
             'text' => 'Solicitudes',
             'route' => 'solicituds.index',
             'icon' => 'fas fa-fw fa-solid fa-address-card',

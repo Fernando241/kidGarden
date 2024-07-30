@@ -16,25 +16,49 @@
             Formulario de Registro
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('docentes.update', $docente->idDocente) }}" id="solicitudForm">
+            <form method="POST" action="{{ route('cursos.update', $curso->idCurso) }}" id="solicitudForm">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="nombre">Nombre Completo:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value=" {{ $docente->nombre }}">
+                    <label for="grado">Grado</label>
+                    <select class="form-control" name="grado" id="grado">
+                        <option value="">Seleccione un grado</option>
+                        <option value="Párvulos" @if ($curso->grado === 'Párvulos') selected @endif>Párvulos</option>
+                        <option value="Pre-jardín" @if ($curso->grado === 'Pre-jardín') selected @endif>Pre-jardín</option>
+                        <option value="Jardín" @if ($curso->grado === 'Jardín') selected @endif>Jardín</option>
+                        <option value="Transición" @if ($curso->grado === 'Transición') selected @endif>Transición</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" value=" {{ $docente->telefono }}">
+                    <label for="seccion">Sección</label>
+                    <select class="form-control" name="seccion" id="seccion" required>
+                        <option value="">Seleccione una sección</option>
+                        <option value="A" @if ($curso->seccion === 'A') selected @endif>A</option>
+                        <option value="B" @if ($curso->seccion === 'B') selected @endif>B</option>
+                        <option value="C" @if ($curso->seccion === 'C') selected @endif>C</option>
+                        <option value="D" @if ($curso->seccion === 'D') selected @endif>D</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value=" {{ $docente->direccion }}">
+                    <label for="docente">Docente</label>
+                    <select class="form-control" id="docente" name="docente_id" required>
+                        <option value="">Seleccione un docente</option>
+                        @foreach ($docentes as $docente)
+                            <option value="{{ $docente->idDocente }}" @if ($curso->docente_id === $docente->idDocente) selected @endif>
+                                {{ $docente->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="correo">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo" value=" {{ $docente->correo }}">
-                </div>    
+                
+                {{-- <div class="form-group">
+                    <label for="direccion">Docente:</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" value=" {{ $curso->docente_id }}">
+                </div> --}}
+                {{-- <div class="form-group">
+                    <label for="correo">Estudiantes:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" value=" {{ $curso->estudiante_id }}">
+                </div>  --}}   
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>

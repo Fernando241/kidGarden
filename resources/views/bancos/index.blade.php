@@ -3,7 +3,12 @@
 @section('title', 'Bancos')
     
 @section('content_header')
-    <h2>Lista de Bancos</h2>
+    <div class="card-header">
+        <h1 class="card-title">Lista de Bancos</h1>
+        <div class="card-tools">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
 @endsection
 
 @section('content')

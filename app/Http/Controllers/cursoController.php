@@ -61,8 +61,9 @@ class CursoController extends Controller
 
     public function edit($idCurso)
     {
-        $curso = Curso::find($idCurso);
-        return view('cursos.edit', compact('curso'));
+        $docentes = Docente::all();
+        $curso = Curso::with('docente')->find($idCurso);
+        return view('cursos.edit', compact('docentes', 'curso'));
     }
 
 

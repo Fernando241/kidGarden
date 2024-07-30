@@ -75,7 +75,7 @@ class BancoController extends Controller
      */
     public function destroy($id)
     {
-        $banco = Banco::fird($id);
+        $banco = Banco::find($id);
         if ($banco) {
             $banco->delete();
         }

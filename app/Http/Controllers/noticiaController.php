@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
 {
+    public function noticias() {
+        return view('noticias');
+    }
     /**
      * Display a listing of the resource.
      */

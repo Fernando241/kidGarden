@@ -16,6 +16,8 @@ use App\Http\Controllers\solicitudController;
 use App\Http\Controllers\ValorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\NoticiaController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
@@ -37,7 +39,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* rutas a vistas de la pagina */
 
-/* Route::get('/noticias', [noticiasController::class, 'noticias']); */
+Route::get('/noticias', [NoticiaController::class, 'noticias']);
 
 Route::get('/nosotros', [nosotrosController::class, 'nosotros']);
 
@@ -71,4 +73,8 @@ Route::resource('/bancos', BancoController::class)->names('bancos');
 
 Route::get('/pagos', [adminController::class, 'pagos'])->name('pagos');
 Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin');
+
+//rutas para usuarios con roles
+
+Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
 

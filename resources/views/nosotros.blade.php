@@ -6,8 +6,13 @@
 
 @section('contenido')
 <div id="parrafos">
+    
+    <div class="imagen">
+        <img src="/img/docente.jpg" alt="">
+    </div>
+
     <p class="columna">
-        <strong>Sobre Genios del Saber</strong>
+        <strong>Sobre Genios del Saber</strong><br>
         En Genios del Saber, nuestra pasión y compromiso son los niños. Fundado con un propósito claro, nuestro jardín infantil ha estado dedicado a nutrir las mentes y corazones jóvenes desde 2010. Cada día, trabajamos incansablemente para brindar a los niños un lugar donde puedan descubrir su grandeza y brillar.
     </p>
     <div class="imagen">
@@ -18,16 +23,12 @@
         <strong>Misión</strong>
         En Genios del Saber, nuestra misión es proporcionar un entorno educativo excepcional donde cada niño descubra su grandeza. Nos esforzamos por fomentar la curiosidad, la creatividad y el amor por el aprendizaje, personalizando la educación para satisfacer las necesidades únicas de cada niño. Creemos en la importancia de nutrir el potencial de nuestros pequeños genios, preparándolos para un futuro brillante.
     </p>
-    <div class="imagen">
-        <img src="/img/niños2.jpg" alt="">
-    </div>
+    
     <p class="columna">
         <strong>Visión</strong>
         Nuestra visión es convertirnos en un referente en la educación infantil, inspirando a los niños a convertirse en líderes del mañana. Buscamos ser reconocidos por nuestro enfoque pedagógico excepcional, nuestras instalaciones seguras y estimulantes, y la contribución positiva que hacemos a la comunidad. En Genios del Saber, visualizamos un mundo en el que cada niño tenga la oportunidad de crecer, aprender y brillar en su propio camino hacia el éxito.
     </p>
-    <div class="imagen">
-        <img src="/img/niños5.jpg" alt="">
-    </div>
+    
     <p class="columna">
         <strong>Valores Fundamentales</strong>
         En el corazón de todo lo que hacemos se encuentran nuestros valores fundamentales, que guían cada aspecto de nuestra institución: <br><br>
@@ -47,9 +48,7 @@
         <strong>Nuestro Equipo Educativo</strong>
         Nuestro equipo está formado por educadores apasionados y altamente calificados que se dedican a guiar a los niños en su viaje de descubrimiento y aprendizaje. Cada miembro del personal comparte nuestro compromiso de proporcionar una educación excepcional y un ambiente enriquecedor.
     </p>
-    <div class="imagen">
-        <img src="/img/docente.jpg" alt="">
-    </div>
+    
     <p class="columna">
         <strong>Instalaciones</strong>
         En Genios del Saber, contamos con instalaciones diseñadas para estimular el crecimiento y la exploración de los niños. Nuestro entorno de aprendizaje incluye aulas inspiradoras, áreas de juego seguras y cómodas, y un comedor saludable.
