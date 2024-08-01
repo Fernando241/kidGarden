@@ -17,13 +17,16 @@ use App\Http\Controllers\ValorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NoticiaController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('home');
-})->middleware(['auth', 'verified'])->name('dashboard'); 
+})->middleware(['auth', 'verified'])->name('dashboard'); */ 
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dasboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,16 +56,16 @@ Route::resource('/solicituds', solicitudController::class)->names('solicituds');
 
 /*  rutas para llamar los datos de la tabla estudiantes */
 
-Route::resource('/estudiantes', estudianteController::class)->names('estudiantes');
+Route::resource('/estudiantes', estudianteController::class)->middleware('can:estudiantes')->names('estudiantes');
 
 //rutas para llamar datos de la tabla Cursos
 
-Route::resource('/cursos', CursoController::class)->names('cursos');
+Route::resource('/cursos', CursoController::class)->middleware('can:cursos')->names('cursos');
 Route::post('/cursos/asignar-estudiantes', 'CursoController@asignarEstudiantes')->name('cursos.asignarEstudiantes');
 
 //rutas para Docentes
 
-Route::resource('/docentes', DocenteController::class)->names('docentes');
+Route::resource('/docentes', DocenteController::class)->middleware('can:docentes')->names('docentes');
 
 //rutas para el Panel Administrativo
 
@@ -71,10 +74,10 @@ Route::resource('/valores', ValorController::class)->names('valores');
 Route::resource('/bancos', BancoController::class)->names('bancos');
 
 
-Route::get('/pagos', [adminController::class, 'pagos'])->name('pagos');
-Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin');
+Route::get('/pagos', [adminController::class, 'pagos'])->middleware('can:pagos')->name('pagos');
+/* Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin'); */
 
 //rutas para usuarios con roles
 
-Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
+Route::resource('users', UserController::class)->middleware('can:usuarios')->only(['index', 'edit', 'update'])->names('admin.users'); //Ruta protegida
 

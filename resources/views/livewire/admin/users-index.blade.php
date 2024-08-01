@@ -23,20 +23,14 @@
                                 <td>{{$user->email}}</td>
                                 <td width='10px'>
                                     <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-primary">Editar</a>
-                                    {{-- <form action="{{route('admin.users.destroy', $user->id)}}" method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Borrar</button>
-                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer">
-                {{ $users->links() }}
-            </div>
+            {{-- paginador --}}
+            {{-- {{ $users->links() }} --}}
         @else
             <div class="card-body">
                 <strong>No hay registros</strong>

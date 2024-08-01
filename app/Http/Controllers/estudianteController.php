@@ -7,7 +7,6 @@ use App\Models\Estudiante;
 
 class estudianteController extends Controller
 {
-    
     public function index(Request $request)
 {
     /* para hacer funcional la barra de busqueda */

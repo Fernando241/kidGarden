@@ -5,8 +5,8 @@
 @section('content_header')
 <div class="card">
     <br>
-    <h3 class="text-primary">Panel Admininistrativo del <strong class="text-blue">Jardín Infantil Genios Del Saber</strong></h3>
-    <h5>Bienvenido {{ auth()->user()->name }}!</h5><br>
+    <h3 class="text-primary"><strong class="text-blue">Jardín Infantil Genios Del Saber</strong></h3>
+    <h5>Bienvenid@:  {{ auth()->user()->name }}!</h5><br>
 </div>
 
 @stop
@@ -15,49 +15,40 @@
     <div class="container">
         <div class="row">
             <!-- Cuadro 1: Valores Educativos -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card">
-                    <br><h4 class="card-title">valores Educativos</h4>
-                    <img src="{{ asset('img/valoresEducativos.jpg') }}" class="card-img-top" alt="valores Educativos">
+                    <br><h4 class="card-title">Página Principal</h4>
+                    <img src="{{ asset('img/niños3.jpg') }}" class="card-img-top" alt="valores Educativos">
                     <div class="card-body">
                         
-                        <a href="{{ route('valores.index') }}" class="btn btn-primary">Ver más</a>
+                        <a href="{{ route('inicio') }}" class="btn btn-primary">Volver</a>
                     </div>
                 </div>
             </div>
 
             <!-- Cuadro 2: Pagos -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card">
-                    <br><h4 class="card-title">Pagos</h4>
-                    <img src="{{ asset('img/pagos.jpg') }}" class="card-img-top" alt="Pagos">
+                    <br><h4 class="card-title">Solicitar Cupo</h4>
+                    <img src="{{ asset('img/solicitud.jpg') }}" class="card-img-top" alt="Pagos">
                     <div class="card-body">
-                        <a href="{{ route('pagos') }}" class="btn btn-primary">Ver más</a>
+                        <a href="{{ route('solicituds.create') }}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>
 
             <!-- Cuadro 3: Bancos -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card">
-                    <br><h4 class="card-title">Bancos</h4>
-                    <img src="{{ asset('img/bancos.jpg') }}" class="card-img-top" alt="Bancos">
+                    <br><h4 class="card-title">Valores Educativos</h4>
+                    <img src="{{ asset('img/pagos.jpg') }}" class="card-img-top" alt="Bancos">
                     <div class="card-body">
-                        <a href="{{ route('bancos.index') }}" class="btn btn-primary">Ver más</a>
+                        <a href="{{ route('valores.index') }}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Cuadro 4: Agregar Administradores -->
-            <div class="col-md-3">
-                <div class="card">
-                    <br><h4 class="card-title">Agregar Administradores</h4>
-                    <img src="{{ asset('img/administradores.jpg') }}" class="card-img-top" alt="Agregar Administradores">
-                    <div class="card-body">
-                        <a href="{{ route('agregar.admin') }}" class="btn btn-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 @stop

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class SolicitudController extends Controller
 {
-    
     public function index(Request $request)
     {
         /* para hacer funcional la barra de busqueda */

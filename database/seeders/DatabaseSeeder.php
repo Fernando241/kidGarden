@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
 
+        /* $this->call(ValoresSeeder::class); */
+
          /* Estudiante::factory()->count(50)->create(); */
 
         /* User::factory()->create([
@@ -44,6 +46,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Luis1234'),
         ])->assignRole('SuperAdmin');
 
-        User::factory(99)->create();
+        User::factory(30)->create();
     }
 }

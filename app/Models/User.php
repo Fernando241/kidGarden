@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     use HasRoles;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -54,7 +55,14 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return 'Administrador(a)';
+        /* return 'Administrador(a)'; */
+        if ($this->roles->isNotEmpty()) {
+            // Obtén el primer rol asignado al usuario
+            return $this->roles->first()->name;
+        }
+    
+        // Si no tiene rol, devuelve una cadena vacía
+        return 'Invitado';
     }
 
     public function adminlte_profile_url()

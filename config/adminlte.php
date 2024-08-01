@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -322,46 +322,65 @@ return [
         ],
         //pestañas de mi menu
         [
-            'text' => 'Panel Administrativo',
+            'text' => 'Principal',
             'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-home',
-            'active' => ['dashboard', 'home', 'valores*', 'pagos*', 'bancos*', 'agregar-admin*'],
+            'active' => ['dashboard', 'home'],
         ],
         [
             'text' => 'Usuarios',
             'route' => 'admin.users.index',
             'icon' => 'fas fa-fw fa-solid fa-users',
             'active' => ['users*'],
+            'can' => 'usuarios',
         ],
         [
             'text' => 'Solicitudes',
             'route' => 'solicituds.index',
             'icon' => 'fas fa-fw fa-solid fa-address-card',
             'active' => ['solicituds*'],
+            'can' =>'solicitudes',
         ],
         [
             'text' => 'Estudiantes',
             'route' => 'estudiantes.index',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
             'icon' => 'fas fa-fw fa-solid fa-user-graduate',
             'active' => ['estudiantes*'],
+            'can' => 'estudiantes',
         ],
         [
             'text' => 'Cursos',
             'route' => 'cursos.index',
             'icon' => 'fas fa-fw fa-solid fa-chalkboard',
             'active' => ['cursos*'],
+            'can' => 'cursos',
         ],
         [
             'text' => 'Docentes',
             'route' => 'docentes.index',
             'icon' => 'fas fa-fw fa-solid fa-user-tie',
             'active' => ['docentes*'],
+            'can' => 'docentes',
         ],
         [
             'text' => 'Matriculas',
             'url' => '#',
             'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
             'active' => ['matriculas*'],
+            'can' =>'matriculas',
+        ],
+        [
+            'text' => 'Valores Educativos',
+            'route' => 'valores.index',
+            'icon' => 'fas fa-fw fa-solid fa-dollar-sign',
+            'active' => ['valores*'],
+        ],
+        [
+            'text' => 'Bancos',
+            'route' => 'bancos.index',
+            'icon' => 'fas fa-fw fa-solid fa-credit-card',
+            'active' => ['bancos*'],
+            'can' => 'bancos',
         ],
         /* [
             'text' => 'paginas',

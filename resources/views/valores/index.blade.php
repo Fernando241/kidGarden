@@ -4,8 +4,8 @@
 
 @section('content_header')
     <div class="card" style="text-align: center">
-        <h1  class="text-primary" style="text-align: center">Valores Educativos</h1><br>
-        <p>En esta sección podras ver y editar los valores Educativos que se van a aplicar al año vigente</p>
+        <h1  class="text-primary"> <b>Valores Educativos</b> </h1><br>
+        <h4 class="text-primary">Para el año vigente</h4>
     </div>
 @stop
 
@@ -26,7 +26,10 @@
                         <th>Nombre</th>
                         <th>Valor Educativo</th>
                         <th>Frecuencia de pago</th>
-                        <th>Editar Valor</th>
+                        @can('valores.edit')
+                            <th>Editar Valor</th>
+                        @endcan
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -36,9 +39,12 @@
                             <td>{{ $valor->nombre }}</td>
                             <td>$ {{ number_format($valor->valor, 0, ',', '.') }}</td>
                             <td>{{ $valor->frecuencia_pago }}</td>
+                            @can('valores.edit')
                             <td>
                                 <a href="{{ route('valores.edit', $valor->id) }}"><i class="fas fa-edit"></i></a>
                             </td>
+                            @endcan
+                            
                         </tr>
                     @endforeach
                 </tbody>

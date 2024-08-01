@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ValorController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:valores.edit')->only('edit','update');
+    }
     
     public function index()
     {

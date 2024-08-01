@@ -3,6 +3,10 @@ body{
     font-family: arial;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Estilos para tablas */
 
 .contUno {

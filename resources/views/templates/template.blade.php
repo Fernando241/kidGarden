@@ -21,17 +21,30 @@
     </nav>
 
     <header>    <!--Encabezado con fondo de imagen-->
+        
+
         <div>
-            <img src="{{ asset('img/logoGeniosDelSaber.png') }}"  id="logo" width="400px">
+            <img src="{{ asset('img/logoGeniosDelSaber.png') }}" id="logo" width="400px">
         </div>
         <div id="login-registro">
-            @if (Route::has('login'))
-            <a href="{{ route('login') }}" class="sesion">Iniciar Sesión</a>
-            @endif
+            @auth
+                <a href="{{ route('login') }}">
+                    <p class="sesion">{{ auth()->user()->adminlte_desc() }} <br> {{ Auth::user()->name }}!</p>
+                    <a href="{{ route('logout') }}" class="sesion" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </a>
+                
+            @else
+                @if (Route::has('login'))
+                    <a href="{{ route('login') }}" class="sesion">Iniciar Sesión</a>
+                @endif
 
-            @if (Route::has('register'))
-            <a href=" {{ route('register')}} " class="sesion">Registrarse</a> 
-            @endif
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="sesion">Registrarse</a>
+                @endif
+            @endauth
         </div>
     
     </header>
