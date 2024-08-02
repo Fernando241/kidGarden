@@ -11,8 +11,10 @@ class Curso extends Model
     use HasFactory;
     protected $primaryKey = 'idCurso';
 
+    protected $fillable = ['grado', 'seccion', 'docente_id'];
+
     //relacion a tabla docentes
-    public function docente()
+    /* public function docente()
     {
         return $this->belongsTo(Docente::class);
     }
@@ -20,7 +22,17 @@ class Curso extends Model
     //relacion a tabla estudiantes
     public function estudiantes()
     {
-        return $this->belongsToMany(Estudiante::class);
+        return $this->belongsToMany(Estudiante::class, 'estudiante_cursos');
+    } */
+
+    public function docente()
+    {
+        return $this->belongsTo(Docente::class);
     }
+
+    public function estudiantes()
+{
+    return $this->belongsToMany(Estudiante::class, 'cursos_estudiantes', 'curso_id', 'estudiante_id');
+}
 
 }

@@ -12,14 +12,22 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>Detalles del Grado {{ $curso->grado }} {{ $curso->seccion }}</h3>
+                <h3>Detalles del Grado:</h3>
+                <h2><b style="color: blue">{{ $curso->grado }} - {{ $curso->seccion }}</b></h2>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Grado: {{ $curso->grado }}</h5>
-                <p class="card-text">Sección: {{ $curso->seccion }}</p>
-                <p class="card-text">Docente: {{ $curso->docente_id }}</p>
-
-
+                <p class="card-text">Docente:
+                    <select class="form-control" id="docente" name="docente_id" required>
+                        <option value="">Seleccione un docente</option>
+                        @foreach ($docentes as $docente)
+                            <option value="{{ $docente->idDocente }}" @if ($curso->docente_id === $docente->idDocente) selected @endif>
+                                {{ $docente->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                </p>
+                
+                
                 <h5>Estudiantes Asignados: </h5>
                 <table class="table">
                     <thead>
@@ -30,13 +38,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($curso->estudiantes as $estudiante)
+                        @foreach ($curso->estudiantes as $estudiante)
                             <tr>
                                 <td>{{$loop->index + 1}}</td>
                                 <td>{{ $estudiante->nombres }}</td>
                                 <td>{{ $estudiante->apellidos }}</td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

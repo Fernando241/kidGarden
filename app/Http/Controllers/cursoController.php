@@ -24,9 +24,16 @@ class CursoController extends Controller
 
     public function create()
     {
+        /* $docentes = Docente::all();
+        $estudiantesDisponibles = Estudiante::whereDoesntHave('cursos')->get(); // Estudiantes sin curso asignado
+        
+        /* $estudiantes = Estudiante::all(); */
+        /*return view('cursos.create', compact('docentes', 'estudiantes')); */
+
         $docentes = Docente::all();
-        $estudiantes = Estudiante::all();
-        return view('cursos.create', compact('docentes', 'estudiantes'));
+        $estudiantesDisponibles = Estudiante::whereDoesntHave('cursos')->get();
+
+        return view('cursos.create', compact('docentes', 'estudiantesDisponibles'));
     }
 
 
@@ -36,26 +43,26 @@ class CursoController extends Controller
             'grado' => 'required',
             'seccion' => 'required',
             'docente_id' => 'required',
-            // Otros campos que puedas tener
         ]);
 
-        $curso = new Curso();
-        $curso->grado = $request->input('grado');
-        $curso->seccion = $request->input('seccion');
-        $curso->docente_id = $request->input('docente_id');
-        $curso->save();
+        $curso = Curso::create([
+            'grado' => $request->grado,
+            'seccion' => $request->seccion,
+            'docente_id' => $request->docente_id,
+        ]);
 
-        $estudiantesSeleccionados = $request->input('estudiantes_seleccionados');
-        $curso->estudiantes()->attach($estudiantesSeleccionados);
+        $curso->estudiantes()->attach($request->estudiantes);
 
-        return redirect()->view('cursos.index');
+        return redirect()->route('cursos.index');
     }
+    
 
 
     public function show($idCurso)
     {
+        $docentes = Docente::all();
         $curso = Curso::with('docente')->find($idCurso);
-        return view('cursos.show', compact('curso'));
+        return view('cursos.show', compact('docentes','curso'));
     }
 
 
@@ -77,24 +84,4 @@ class CursoController extends Controller
     {
         //
     }
-
-    //función para asignar los estudiantes al curso
-    public function asignarEstudiantes(Request $request, Curso $curso)
-    {
-        $curso->estudiantes()->sync($request->estudiante_ids);
-        return redirect()->back()->with('success', 'Estudiantes asignados al curso con éxito.');
-    }
-
-    public function procesarEstudiantes(Request $request)
-{
-    // Obtén los IDs de los estudiantes seleccionados desde el formulario
-    $estudiantesSeleccionados = $request->input('estudiantes_seleccionados');
-
-    // Almacena estos IDs en la sesión
-    session(['estudiantes_seleccionados' => $estudiantesSeleccionados]);
-
-    // Redirige al formulario principal para completar otros datos del curso
-    return redirect()->route('cursos.create');
-}
-
 }

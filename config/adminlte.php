@@ -318,7 +318,7 @@ return [
         [
             'text' => 'blog',
             'url' => 'admin/blog',
-            'can' => 'manage-blog', //autorización de roles
+            'can' => 'manage-blog', 
         ],
         //pestañas de mi menu
         [

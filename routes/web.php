@@ -22,11 +22,11 @@ use App\Http\Controllers\NoticiaController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
-/* Route::get('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('home');
-})->middleware(['auth', 'verified'])->name('dashboard'); */ 
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dasboard');
+/* Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dasboard'); */
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -61,7 +61,7 @@ Route::resource('/estudiantes', estudianteController::class)->middleware('can:es
 //rutas para llamar datos de la tabla Cursos
 
 Route::resource('/cursos', CursoController::class)->middleware('can:cursos')->names('cursos');
-Route::post('/cursos/asignar-estudiantes', 'CursoController@asignarEstudiantes')->name('cursos.asignarEstudiantes');
+Route::post('/cursos/asignar-estudiantes', 'CursoController@asignarEstudiantes')->name('cursos.asignarEstudiantes'); //pendiente para agregar estudiantes
 
 //rutas para Docentes
 
@@ -73,9 +73,7 @@ Route::resource('/valores', ValorController::class)->names('valores');
 
 Route::resource('/bancos', BancoController::class)->names('bancos');
 
-
 Route::get('/pagos', [adminController::class, 'pagos'])->middleware('can:pagos')->name('pagos');
-/* Route::get('/agregar-admin', [adminController::class, 'agregarAdmin'])->name('agregar.admin'); */
 
 //rutas para usuarios con roles
 

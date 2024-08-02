@@ -54,47 +54,17 @@
                     <div class="form-group">
                         <label>Estudiantes Asignados</label>
                         <div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEstudiantes">
-                                Agregar Estudiantes
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalEstudiantes" tabindex="-1" role="dialog" aria-labelledby="modalEstudiantesLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalEstudiantesLabel">Agregar Estudiantes al Curso</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                            
+                            
+                            <div class="form-group">
+                                <label>Estudiantes Asignados</label>
+                                <div>
+                                    @foreach ($estudiantesDisponibles as $estudiante)
+                                        <div>
+                                            <input type="checkbox" name="estudiantes[]" value="{{ $estudiante->idEstudiante }}">
+                                            {{ $estudiante->nombres }} {{ $estudiante->apellidos }}
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombres</th>
-                                                        <th>Apellidos</th>
-                                                        <th>Seleccionar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($estudiantes as $estudiante)
-                                                        <tr>
-                                                            <td>{{ $estudiante->nombres }}</td>
-                                                            <td>{{ $estudiante->apellidos }}</td>
-                                                            <td>
-                                                                <input type="checkbox" name="estudiantes_seleccionados[]" value="{{ $estudiante->idEstudiante }}">
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-primary">Guardar Estudiantes</button>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -102,10 +72,6 @@
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary text-right">Guardar Curso</button>
                     </div>
-                    
-                    {{-- campo oculto para almacenar los estudiantes selecionandos antes de guardar definitivamente los ajustes del curso --}}
-                    <input type="hidden" name="estudiantes_seleccionados" value="{{ json_encode(session('estudiantes_seleccionados')) }}">
-                    
                 </form>
             </div>
         </div>

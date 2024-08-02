@@ -11,8 +11,13 @@ class Docente extends Model
 
     protected $primaryKey = 'idDocente';
 
-    public function cursos()
+    /* public function cursos()
     {
         return $this->hasMany(Curso::class,);
+    } */
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class);
     }
 }
