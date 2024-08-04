@@ -34,7 +34,7 @@
                         <th>Documento</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Teléfono</th>
+                        <th>Grado</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                             <td>{{ $estudiante->documento }}</td>
                             <td>{{ $estudiante->nombres }}</td>
                             <td>{{ $estudiante->apellidos }}</td>
-                            <td>{{ $estudiante->telefono }}</td>
+                            <td>{{ $estudiante->grado }}</td>
                             <td>
                                 <a href="{{ route('estudiantes.show', $estudiante) }}"><i class="fas fa-eye"></i></a>
                             </td>

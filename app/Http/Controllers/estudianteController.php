@@ -15,7 +15,7 @@ class estudianteController extends Controller
         return $query->where('documento', 'like', "%{$search}%")
                     ->orWhere('nombres', 'like', "%{$search}%")
                     ->orWhere('apellidos', 'like', "%{$search}%")
-                    ->orWhere('telefono', 'like', "%{$search}%");
+                    ->orWhere('grado', 'like', "%{$search}%");
     })->paginate(15);
 
     /* retornar todos los datos de la tabla estudiantes */
@@ -32,12 +32,13 @@ class estudianteController extends Controller
     public function store(Request $request) //guardar en la base de datos los nuevos registros
     {
         $estudiante = new Estudiante();
+        $estudiante->tipo_documento = $request->input('tipo_documento');
         $estudiante->documento = $request->input('documento');
         $estudiante->nombres = $request->input('nombres');
         $estudiante->apellidos = $request->input('apellidos');
-        $estudiante->telefono = $request->input('telefono');
-        $estudiante->direccion = $request->input('direccion');
-        $estudiante->correo = $request->input('correo');
+        $estudiante->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $estudiante->grado = $request->input('grado');
+        $estudiante->acudiente_id = $request->input('acudiente_id');
         $estudiante->save();
         
         return redirect()->route('estudiantes.index');
@@ -62,21 +63,23 @@ class estudianteController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
+            'tipo_documento' => 'required',
             'documento' => 'required',
             'nombres' => 'required',
             'apellidos' => 'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-            'correo' => 'required|email',
+            'fecha_nacimiento' => 'required',
+            'grado' => 'required',
+            'acudiente_id' => 'required',
         ]);
 
         $estudiante = Estudiante::find($id);
+        $estudiante->tipo_documento = $request->input('tipo_documento');
         $estudiante->documento = $request->input('documento');
         $estudiante->nombres = $request->input('nombres');
         $estudiante->apellidos = $request->input('apellidos');
-        $estudiante->telefono = $request->input('telefono');
-        $estudiante->direccion = $request->input('direccion');
-        $estudiante->correo = $request->input('correo');
+        $estudiante->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $estudiante->grado = $request->input('grado');
+        $estudiante->acudiente_id = $request->input('acudiente_id');
         $estudiante->save();
 
         return redirect()->route('estudiantes.index');

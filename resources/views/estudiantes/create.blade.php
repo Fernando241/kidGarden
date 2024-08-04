@@ -16,6 +16,10 @@
             <form method="POST" action="{{ route('estudiantes.store') }}" id="solicitudForm">
                 @csrf
                 <div class="form-group">
+                    <label for="tipo_documento">Tipo de Documento</label>
+                    <input type="text" class="form-control" id="tipo_documento" name="tipo_documento" required>
+                </div>
+                <div class="form-group">
                     <label for="documento">Documento:</label>
                     <input type="text" class="form-control" id="documento" name="documento" required>
                 </div>
@@ -28,16 +32,16 @@
                     <input type="text" class="form-control" id="apellidos" name="apellidos" required>
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" required>
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="text" class="form-control text-center" id="fecha_nacimiento" name="fecha_nacimiento" required>
                 </div>
                 <div class="form-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                    <label for="grado">Grado</label>
+                    <input type="text" class="form-control text-center" id="grado" name="grado" required>
                 </div>
                 <div class="form-group">
-                    <label for="correo">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo" required>
+                    <label for="acudiente_id">Acudiente</label>
+                    <input type="text" class="form-control text-center" id="acudiente_id" name="acudiente_id" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>

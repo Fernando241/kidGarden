@@ -13,12 +13,19 @@ return new class extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id('idEstudiante');
-            $table->string('documento', 20);
+            /* $table->string('documento', 20);
             $table->string('nombres', 50);
             $table->string('apellidos', 50);
             $table->string('telefono', 15);
             $table->string('direccion', 100);
-            $table->string('correo', 50);
+            $table->string('correo', 50); */
+            $table->enum('tipo_documento', ['nacido vivo', 'registro civil', 'tarjeta de identidad', 'tarjeta de extranjería']);
+            $table->string('documento', 15);
+            $table->string('nombres', 50);
+            $table->string('apellidos', 50);
+            $table->date('fecha_nacimiento');
+            $table->enum('grado', ['Parvulos', 'Pre Jardin', 'Jardin', 'Transicion']);
+            $table->foreignId('acudiente_id')->constrained();
             $table->timestamps();
         });
     }

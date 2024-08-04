@@ -80,8 +80,12 @@ class CursoController extends Controller
     }
 
 
-    public function destroy(Curso $curso)
+    public function destroy($idCurso)
     {
-        //
+        $curso = Curso::find($idCurso);
+        if ($curso) {
+            $curso->delete();
+        }
+        return redirect()->route('cursos.index');
     }
 }

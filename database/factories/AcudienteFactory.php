@@ -17,8 +17,14 @@ class AcudienteFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre'=>$this->faker->name(),
-            'parentezco'=>$this->faker->randomElement(['Padre', 'Abuelo', 'Tio', 'Hermano', 'Vecino']),
+        'tipo_documento_acudiente' => $this->faker->randomElement(['cédula de ciudadanía', 'cédula de extranjería']),
+        'documento_acudiente' => $this->faker->unique()->numberBetween(88100000, 1024000000),
+        'nombres_acudiente' => $this->faker->name(),
+        'apellidos_acudiente' => $this->faker->lastName(),
+        'telefono' => $this->faker->phoneNumber(),
+        'direccion' => $this->faker->address(),
+        'correo' => $this->faker->unique()->safeEmail,
+        'parentesco' => $this->faker->randomElement(['padre', 'madre', 'abuelo', 'abuela', 'hermano', 'tio']),
         ];
     }
 }

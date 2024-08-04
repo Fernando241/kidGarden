@@ -17,6 +17,10 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
+                    <label for="tipo_documento">Tipo de Documento</label>
+                    <input type="text" class="form-control text-center" id="tipo_documento"value="{{ $estudiante->tipo_documento }}">
+                </div>
+                <div class="form-group">
                     <label for="documento">Documento:</label>
                     <input type="text" class="form-control" id="documento" name="documento" value=" {{ $estudiante->documento }}">
                 </div>
@@ -29,16 +33,16 @@
                     <input type="text" class="form-control" id="apellidos" name="apellidos" value=" {{ $estudiante->apellidos }}">
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" value=" {{ $estudiante->telefono }}">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="text" class="form-control text-center" id="fecha_nacimiento"value="{{ $estudiante->fecha_nacimiento }}">
                 </div>
                 <div class="form-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value=" {{ $estudiante->direccion }}">
+                    <label for="grado">Grado</label>
+                    <input type="text" class="form-control text-center" id="grado" value="{{ $estudiante->grado }}">
                 </div>
                 <div class="form-group">
-                    <label for="correo">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo" value=" {{ $estudiante->correo }}">
+                    <label for="acudiente_id">Acudiente</label>
+                    <input type="text" class="form-control text-center" id="acudiente_id" value="{{ $estudiante->acudiente_id }}">
                 </div>    
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>

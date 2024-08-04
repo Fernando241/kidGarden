@@ -20,6 +20,10 @@
             <div class="card-body">
                 <form>
                     <div class="form-group">
+                        <label for="tipo_documento">Tipo de Documento</label>
+                        <input type="text" class="form-control text-center" id="tipo_documento" placeholder="Tipo de Documento" value="{{ $estudiante->tipo_documento }}" readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="documento">Documento</label>
                         <input type="text" class="form-control text-center" id="documento" placeholder="Documento" value="{{ $estudiante->documento }}" readonly>
                     </div>
@@ -32,16 +36,16 @@
                         <input type="text" class="form-control text-center" id="apellidos" placeholder="Apellidos" value="{{ $estudiante->apellidos }}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" class="form-control text-center" id="telefono" placeholder="Telefono" value="{{ $estudiante->telefono }}" readonly>
+                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        <input type="text" class="form-control text-center" id="fecha_nacimiento" placeholder="Fecha de Nacimiento" value="{{ $estudiante->fecha_nacimiento }}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control text-center" id="direccion" placeholder="Dirección" value="{{ $estudiante->direccion }}" readonly>
+                        <label for="grado">Grado</label>
+                        <input type="text" class="form-control text-center" id="grado" placeholder="Grado" value="{{ $estudiante->grado }}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" class="form-control text-center" id="email" placeholder="Correo electrónico" value="{{ $estudiante->correo }}" readonly>
+                        <label for="acudiente_id">Acudiente</label>
+                        <input type="text" class="form-control text-center" id="acudiente_id" placeholder="Correo electrónico" value="{{ $estudiante->acudiente_id }}" readonly>
                     </div>
                 </form>
             </div>

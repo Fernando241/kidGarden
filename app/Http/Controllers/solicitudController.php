@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
 use App\Models\User;
+use App\Models\Acudiente;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
 class SolicitudController extends Controller
@@ -109,6 +111,7 @@ class SolicitudController extends Controller
             'direccion' => 'required',
             'correo' => 'required|email|max:100',
             'parentesco' => 'required|max:30',
+            'estado' => 'required|string',
         ]);
     
         $solicitud = Solicitud::find($id);
@@ -126,7 +129,31 @@ class SolicitudController extends Controller
         $solicitud->direccion = $request->input('direccion');
         $solicitud->correo = $request->input('correo');
         $solicitud->parentesco = $request->input('parentesco');
+        $solicitud->estado = $request->input('estado');
         $solicitud->save();
+
+        // Crear el acudiente
+        $acudiente = Acudiente::create([
+            'tipo_documento_acudiente' => $solicitud->tipo_documento_padre,
+            'documento_acudiente' => $solicitud->documento_padre,
+            'nombres_acudiente' => $solicitud->nombres_padre,
+            'apellidos_acudiente' => $solicitud->apellidos_padre,
+            'telefono' => $solicitud->telefono,
+            'direccion' => $solicitud->direccion,
+            'correo' => $solicitud->correo,
+            'parentesco' => $solicitud->parentesco
+        ]);
+
+        // Crear el estudiante
+        Estudiante::create([
+            'tipo_documento' => $solicitud->tipo_documento,
+            'documento' => $solicitud->documento,
+            'nombres' => $solicitud->nombres,
+            'apellidos' => $solicitud->apellidos,
+            'fecha_nacimiento' => $solicitud->fecha_nacimiento,
+            'grado' => $solicitud->grado,
+            'acudiente_id' => $acudiente->id
+        ]);
     
         return redirect()->route('solicituds.index');
     }

@@ -97,6 +97,15 @@
                         <input type="text" name="parentesco" id="parentesco" class="form-control" value="{{ $solicitud->parentesco }}">
                     </div>
 
+                    {{-- para actualizar mi solicitud --}}
+                    <div class="form-group mb-3">
+                        <label for="estado">Estado actual de esta solicitud</label>
+                        <select name="estado" id="estado" class="form-control">
+                            <option value="en_proceso" {{ $solicitud->estado == 'en_proceso' ? 'selected' : '' }}>En espera</option>
+                            <option value="aprobada" {{ $solicitud->estado == 'aprobada' ? 'selected' : '' }}>Admitir este estudiante</option>
+                        </select>
+                    </div>
+
                     <button type="submit" class="btn btn-success">Actualizar</button>
                 </form>
             </div>

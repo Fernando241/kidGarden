@@ -11,14 +11,24 @@ class Estudiante extends Model
     use HasFactory;
     protected $primaryKey = 'idEstudiante';
 
-    /* public function cursos()
-    {
-        return $this->belongsToMany(Curso::class, 'estudiante_cursos');
-    } */
+    protected $fillable = [
+        'tipo_documento',
+        'documento',
+        'nombres',
+        'apellidos',
+        'fecha_nacimiento',
+        'grado',
+        'acudiente_id'
+    ];
 
-    public function cursos()
-{
-    return $this->belongsToMany(Curso::class, 'cursos_estudiantes', 'estudiante_id', 'curso_id');
-}
+        public function acudiente()
+    {
+        return $this->belongsTo(Acudiente::class);
+    }
+
+        public function cursos()
+    {
+        return $this->belongsToMany(Curso::class, 'cursos_estudiantes', 'estudiante_id', 'curso_id');
+    }
 
 }
