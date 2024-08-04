@@ -48,10 +48,32 @@
         </div>
     
     </header>
-    <div id="content"> <!--Contenedor para crear un caja dentro del body-->
+    <div id="content"> <!-- Contenedor para crear un caja dentro del body -->
         <section>
             <div class="menu"> <!--clase padre del menu-->
-                <a href=" {{ route('solicituds.create') }} " id="cupo">Solicitar Cupo</a> <!--Se le agrego un id diferente para darle propiedades distintas a las demán anclas-->
+
+                <!-- @if (auth()->check())
+                    <a href="{{ route('solicituds.create') }}" id="cupo">Solicitar Cupo</a>
+                @else
+                    <a href="{{ route('register') }}" id="cupo">Solicitar Cupo</a>
+                @endif -->
+                
+
+                @if (auth()->check())
+                    @php
+                        $solicitudExistente = auth()->user()->solicitudes()->where('estado', 'en_proceso')->first();
+                    @endphp
+
+                    @if ($solicitudExistente)
+                        <a href="{{ route('solicituds.existing') }}" id="cupo">Solicitar Cupo</a>
+                    @else
+                        <a href="{{ route('solicituds.create') }}" id="cupo">Solicitar Cupo</a>
+                    @endif
+                @else
+                    <a href="{{ route('register') }}" id="cupo">Solicitar Cupo</a>
+                @endif
+
+
                 <button class="nav-boton" onclick="accion()">Menu</button> <!--boton que aparece en pantallas pequeñas y se configura en JavaScrip-->
                 <a href=" {{ url('/')}} " class="nav_menu ocultar">Inicio</a>
                 <a href=" {{ url('/nosotros') }} " class="nav_menu ocultar">Nosotros</a>

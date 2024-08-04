@@ -1,9 +1,21 @@
 <div>
     <div class="card">
-        <div class="card-header">
+        {{-- <div class="card-header">
             <h3 class="card-title">Listado de Usuarios</h3>
             <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
-        </div>
+        </div> --}}
+
+        {{-- barra de busqueda por parametros --}}
+    <div class="card-body">
+        <form method="GET" action="{{ route('admin.users.index') }}">
+            <div class="input-group mb-3">
+                <input type="text" name="search" class="form-control" placeholder="Buscar por Nombre, Apellido o correo" value="{{ request()->query('search') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </div>
+        </form>
+
         @if ($users->count())
             <div class="card-body">
                 <table class="table table-stripe">
@@ -30,7 +42,7 @@
                 </table>
             </div>
             {{-- paginador --}}
-            {{-- {{ $users->links() }} --}}
+            {{ $users->links() }}
         @else
             <div class="card-body">
                 <strong>No hay registros</strong>

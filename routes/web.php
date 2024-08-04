@@ -52,6 +52,7 @@ Route::get('/niveles', [nivelesController::class, 'niveles']);
 
 /* rutas para llamar los datos de las solicitudes*/
 
+Route::get('/solicituds/existing', [SolicitudController::class, 'existing'])->name('solicituds.existing');
 Route::resource('/solicituds', solicitudController::class)->names('solicituds');
 
 /*  rutas para llamar los datos de la tabla estudiantes */

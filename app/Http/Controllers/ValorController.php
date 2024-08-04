@@ -11,6 +11,7 @@ class ValorController extends Controller
     public function __construct()
     {
         $this->middleware('can:valores.edit')->only('edit','update');
+        $this->middleware('can:valores.create')->only('create', 'store');
     }
     
     public function index()
@@ -19,20 +20,20 @@ class ValorController extends Controller
         return view('valores.index', compact('valor'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('valores.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $valor = new Valor();
+        $valor->nombre = $request->input('nombre');
+        $valor->valor = $request->input('valor');
+        $valor->frecuencia_pago = $request->input('frecuencia_pago');
+        $valor->save();
+
+        return redirect()->route('valores.index');
     }
 
     /**

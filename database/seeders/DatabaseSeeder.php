@@ -25,20 +25,11 @@ class DatabaseSeeder extends Seeder
 
         Docente::Factory(10)->create();
 
-        /* Curso::Factory(10)->create(); */
-
         Noticia::factory(5)->create();
 
         $this->call(RoleSeeder::class);
 
         /* $this->call(ValoresSeeder::class); */
-
-         /* Estudiante::factory()->count(50)->create(); */
-
-        /* User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]); */
 
         User::create([
             'name' => 'Fernando Rolón',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SolicitudController extends Controller
@@ -24,27 +25,53 @@ class SolicitudController extends Controller
     
     public function create()
     {
+        /* return view('solicituds.create'); */
+
+        $user = auth()->user();
+
+        // Verificar si el usuario ya tiene una solicitud en proceso
+        $solicitudExistente = Solicitud::where('user_id', $user->id)->where('estado', 'en_proceso')->first();
+
+        if ($solicitudExistente) {
+            return redirect()->route('solicituds.existing');
+        }
+
         return view('solicituds.create');
+        
     }
+
+    //para mostra el estado de la solicitud
+
+        public function existing()
+    {
+        return view('solicituds.existing');
+    }
+
 
     
     public function store(Request $request)
     {
-        $solicitud = new Solicitud();
-        $solicitud->tipo_documento = $request->input('tipo_documento');
-        $solicitud->documento = $request->input('documento');
-        $solicitud->nombres = $request->input('nombres');
-        $solicitud->apellidos = $request->input('apellidos');
-        $solicitud->fecha_nacimiento = $request->input('fecha_nacimiento');
-        $solicitud->grado = $request->input('grado');
-        $solicitud->tipo_documento_padre = $request->input('tipo_documento_padre');
-        $solicitud->documento_padre = $request->input('documento_padre');
-        $solicitud->nombres_padre = $request->input('nombres_padre');
-        $solicitud->apellidos_padre = $request->input('apellidos_padre');
-        $solicitud->telefono = $request->input('telefono');
-        $solicitud->direccion = $request->input('direccion');
-        $solicitud->correo = $request->input('correo');
-        $solicitud->parentesco = $request->input('parentesco');
+        // Crear una nueva solicitud
+        $solicitud = new Solicitud([
+            'tipo_documento' => $request->input('tipo_documento'),
+            'documento' => $request->input('documento'),
+            'nombres' => $request->input('nombres'),
+            'apellidos' => $request->input('apellidos'),
+            'fecha_nacimiento' => $request->input('fecha_nacimiento'),
+            'grado' => $request->input('grado'),
+            'tipo_documento_padre' => $request->input('tipo_documento_padre'),
+            'documento_padre' => $request->input('documento_padre'),
+            'nombres_padre' => $request->input('nombres_padre'),
+            'apellidos_padre' => $request->input('apellidos_padre'),
+            'telefono' => $request->input('telefono'),
+            'direccion' => $request->input('direccion'),
+            'correo' => $request->input('correo'),
+            'parentesco' => $request->input('parentesco'),
+        ]);
+
+        // Asignar el ID del usuario actual a la solicitud
+        $solicitud->user_id = auth()->id(); // Esto relaciona la solicitud con el usuario
+
         $solicitud->save();
 
         return view('inicio');

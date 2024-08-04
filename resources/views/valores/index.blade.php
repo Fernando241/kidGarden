@@ -10,7 +10,12 @@
 @stop
 
 @section('content')
+    {{-- agregar nuevo valor educativo --}}
+    @can('valores.create')
+        <a href="{{ route('valores.create') }}" class="btn btn-primary">Agregar Nuevo Valor</a>
+    @endcan
     
+
     <div class="card-header">
         <h3 class="card-title">Valores Educativos</h3>
         <div class="card-tools">

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('correo', 100);
             $table->string('parentesco', 30);
+            $table->foreignId('user_id')->constrained(); //campo para crear la realación al usuario que envia la solicitud
+            $table->enum('estado', ['en_proceso', 'aprobada', 'rechazada'])->default('en_proceso');
             $table->timestamps();
         });
     }

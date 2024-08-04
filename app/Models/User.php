@@ -68,4 +68,10 @@ class User extends Authenticatable
     {
         return 'profile/username';
     }
+
+    //para crear la relación con la solicitud
+        public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class)->where('estado', 'en_proceso');
+    }
 }
