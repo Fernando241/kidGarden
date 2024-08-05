@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="acudiente_id">Acudiente</label>
-                        <input type="text" class="form-control text-center" id="acudiente_id" placeholder="Correo electrónico" value="{{ $estudiante->acudiente_id }}" readonly>
+                        <input type="text" class="form-control text-center" id="acudiente_id" placeholder="Correo electrónico" value="{{ $estudiante->acudiente->nombres_acudiente }} {{ $estudiante->acudiente->apellidos_acudiente }}" readonly>
                     </div>
                 </form>
             </div>

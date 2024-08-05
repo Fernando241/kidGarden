@@ -3,7 +3,10 @@
 @section('title', 'nuevo estudiante')
 
 @section('content_header')
+<div class="alert alert-info">
     <h2>Crear Nuevo Estudiante</h2>
+    <p>Nota: Para crear un nuevo estudiante registre primero el acudiente en la tabla correspondiente</p>
+</div>
 @stop
 
 @section('content')
@@ -15,10 +18,14 @@
         <div class="card-body">
             <form method="POST" action="{{ route('estudiantes.store') }}" id="solicitudForm">
                 @csrf
-                <div class="form-group">
-                    <label for="tipo_documento">Tipo de Documento</label>
-                    <input type="text" class="form-control" id="tipo_documento" name="tipo_documento" required>
-                </div>
+                <label for="tipo_documento">Tipo de documento *</label>
+                    <select name="tipo_documento" id="tipo_documento" class="form-control" required>
+                        <option value="">Seleccionar</option>
+                        <option value="nacido vivo">Nacido Vivo</option>
+                        <option value="registro civil">Registro Civil</option>
+                        <option value="tarjeta de identidad">Tarjeta de Identidad</option>
+                        <option value="tarjeta de extranjería">Tarjeta de Extranjería</option>
+                    </select>
                 <div class="form-group">
                     <label for="documento">Documento:</label>
                     <input type="text" class="form-control" id="documento" name="documento" required>
@@ -31,18 +38,33 @@
                     <label for="apellidos">Apellidos:</label>
                     <input type="text" class="form-control" id="apellidos" name="apellidos" required>
                 </div>
-                <div class="form-group">
-                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                    <input type="text" class="form-control text-center" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                <div class="campos">
+                    <label for="fecha_nacimiento">fecha de nacimiento *</label>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
                 </div>
-                <div class="form-group">
-                    <label for="grado">Grado</label>
-                    <input type="text" class="form-control text-center" id="grado" name="grado" required>
+                <div class="campos">
+                    <label for="grado">Grado *</label>
+                    <select name="grado" id="grado" class="form-control" required>
+                        <option value="">selecione el grado</option>
+                        <option value="Parvulos">Pärvulos (2 a 3 años)</option>
+                        <option value="Pre Jardin">Pre-jardín (3 a 4 años)</option>
+                        <option value="Jardin">Jardín (4 a 5 años)</option>
+                        <option value="Transicion">Transición (5 a 6 años)</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="acudiente_id">Acudiente</label>
-                    <input type="text" class="form-control text-center" id="acudiente_id" name="acudiente_id" required>
+                    <select class="form-control" id="acudiente" name="acudiente_id" required>
+                        <option value="">Seleccione un acudiente</option>
+                        @foreach ($acudientes as $acudiente)
+                            <option value="{{ $acudiente->id }}">{{ $acudiente->nombres_acudiente }} {{ $acudiente->apellidos_acudiente }}</option>
+                        @endforeach
+                    </select>
                 </div>
+                {{-- <div class="form-group">
+                    <label for="acudiente_id">Acudiente</label>
+                    <input type="text" class="form-control text-center" id="acudiente_id" name="acudiente_id" required>
+                </div> --}}
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>

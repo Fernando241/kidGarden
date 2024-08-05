@@ -24,12 +24,6 @@ class CursoController extends Controller
 
     public function create()
     {
-        /* $docentes = Docente::all();
-        $estudiantesDisponibles = Estudiante::whereDoesntHave('cursos')->get(); // Estudiantes sin curso asignado
-        
-        /* $estudiantes = Estudiante::all(); */
-        /*return view('cursos.create', compact('docentes', 'estudiantes')); */
-
         $docentes = Docente::all();
         $estudiantesDisponibles = Estudiante::whereDoesntHave('cursos')->get();
 

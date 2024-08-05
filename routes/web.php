@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\NoticiaController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
@@ -79,4 +80,12 @@ Route::get('/pagos', [adminController::class, 'pagos'])->middleware('can:pagos')
 //rutas para usuarios con roles
 
 Route::resource('users', UserController::class)->middleware('can:usuarios')->only(['index', 'edit', 'update'])->names('admin.users'); //Ruta protegida
+
+//rutas para la gestión de matriculas
+
+Route::resource('/matriculas', MatriculaController::class)->names('matriculas');
+Route::get('/buscar-estudiante/{documento}', [EstudianteController::class, 'buscarEstudiante']);
+
+
+
 

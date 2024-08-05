@@ -364,7 +364,7 @@ return [
         ],
         [
             'text' => 'Matriculas',
-            'url' => '#',
+            'route' => 'matriculas.index',
             'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
             'active' => ['matriculas*'],
             'can' =>'matriculas',

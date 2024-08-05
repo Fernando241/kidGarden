@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('documento_acudiente', 20);
             $table->string('nombres_acudiente', 50);
             $table->string('apellidos_acudiente', 50);
-            $table->string('telefono', 15);
+            $table->string('telefono', 20);
             $table->string('direccion');
             $table->string('correo', 100);
             $table->string('parentesco', 30);

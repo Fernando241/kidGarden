@@ -12,6 +12,7 @@
         <div class="card-header">
             <a href="{{ route('cursos.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Crear Nuevo Curso</a>
         </div>
+    </div>
 
         {{-- barra de busqueda por parametros --}}
         <div class="card-body">

@@ -13,26 +13,18 @@ class Curso extends Model
 
     protected $fillable = ['grado', 'seccion', 'docente_id'];
 
-    //relacion a tabla docentes
-    /* public function docente()
+        public function docente()
     {
         return $this->belongsTo(Docente::class);
     }
 
-    //relacion a tabla estudiantes
-    public function estudiantes()
+        public function estudiantes()
     {
-        return $this->belongsToMany(Estudiante::class, 'estudiante_cursos');
-    } */
-
-    public function docente()
-    {
-        return $this->belongsTo(Docente::class);
+        return $this->belongsToMany(Estudiante::class, 'cursos_estudiantes', 'curso_id', 'estudiante_id');
     }
 
-    public function estudiantes()
-{
-    return $this->belongsToMany(Estudiante::class, 'cursos_estudiantes', 'curso_id', 'estudiante_id');
-}
-
+    public function matriculas()
+        {
+            return $this->hasMany(Matricula::class, 'curso_id');
+        }
 }

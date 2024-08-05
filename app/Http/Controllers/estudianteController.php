@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Acudiente;
 use Illuminate\Http\Request;
 use App\Models\Estudiante;
 
@@ -25,7 +26,8 @@ class estudianteController extends Controller
 
     public function create() //abrir formulario para un nuevo registro
     {
-        return view('estudiantes.create');
+        $acudientes = Acudiente::all();
+        return view('estudiantes.create', compact('acudientes'));
     }
 
 
@@ -58,6 +60,17 @@ class estudianteController extends Controller
         return view('estudiantes.edit', compact('estudiante'));
     }
 
+    //funcion para buscar datos del estudiante en mi vista create
+    public function buscarEstudiante($documento)
+    {
+        $estudiante = Estudiante::with('acudiente')->where('documento', $documento)->first(); 
+
+        if ($estudiante) {
+            return response()->json($estudiante);
+        }
+
+        return response()->json(['error' => 'Estudiante no encontrado'], 404);
+    }
 
     public function update(Request $request, $id) //para actualiza un registro
     {
@@ -94,4 +107,6 @@ class estudianteController extends Controller
         }
         return redirect()->route('estudiantes.index');
     }
+
+    
 }

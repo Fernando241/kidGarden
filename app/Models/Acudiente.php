@@ -22,6 +22,11 @@ class Acudiente extends Model
 
     public function estudiantes()
     {
-        return $this->hasMany(Estudiante::class);
+        return $this->hasMany(Estudiante::class, 'acudiente_id'); 
+    }
+
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class, 'acudiente_id');
     }
 }
