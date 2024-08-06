@@ -3,18 +3,19 @@
 @section('title', 'Crear Curso')
 
 @section('content_header')
+<div class="alert alert-info">
+    <h1>Crear nuevo curso</h1>
     <div class="text-right">
-        <a href="{{ route('cursos.index') }}" class="btn btn-primary">Volver</a>
+        <a href="{{ route('cursos.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
     </div>
+</div>
+    
 @stop
 
 @section('content')
 
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                Crear Nuevo Curso
-            </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('cursos.store') }}" id="solicitudForm">
                     @csrf

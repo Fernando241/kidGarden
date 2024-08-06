@@ -3,17 +3,18 @@
 @section('title', 'Bancos')
     
 @section('content_header')
-    <div class="card-header">
-        <h1 class="card-title">Lista de Bancos</h1>
-        <div class="card-tools">
-            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver</a>
+    <div class="alert alert-info">
+        <h1>Lista de Bancos</h1>
+        <div class="text-right">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
         </div>
     </div>
 @endsection
 
 @section('content')
+<div class="card">
     <div class="card-header">
-        <div class="text-right">
+        <div>
             <a href="{{ route('bancos.create') }}" class="btn btn-primary">Agregar Nuevo</a>
         </div>
     </div>
@@ -54,6 +55,8 @@
                 </tbody>
             </table>
         </div>
+</div>
+    
 @stop
 
 @section('js')

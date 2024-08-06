@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('apellidos_acudiente', 50);
             $table->string('telefono', 20);
             $table->string('direccion');
-            $table->string('correo', 100);
-            $table->string('parentesco', 30);
+            $table->string('correo', 150);
+            $table->string('parentesco', 40);
             $table->timestamps();
         });
     }

@@ -3,9 +3,11 @@
 @section('title', 'Editar Docente')
 
 @section('content_header')
-    <h2>Editar Curso</h2>
-    <div class="text-right">
-        <a href="{{ route('cursos.index') }}" class="btn btn-primary">Volver</a>
+    <div class="alert alert-info">
+        <h2>Editar Curso</h2>
+        <div class="text-right">
+            <a href="{{ route('cursos.index') }}" class="btn btn-primary">Volver</a>
+        </div>
     </div>
 @stop
 

@@ -2,13 +2,19 @@
 
 @section('title', 'Datos de la Solicitud')
 
+@section('content_header')
+    <div class="alert alert-info">
+        <h3>Detalles de la Solicitud</h3>
+        <div class="text-right">
+            <a href="{{ route('solicituds.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+        </div>
+    </div>
+@stop
+
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3>Detalles de la Solicitud</h3>
-                <a href="{{ route('solicituds.index') }}" class="btn btn-primary">Volver</a>
-            </div>
+            
             <div class="card-body">
                 <h3 style="text-align: center">Datos del Estudiante</h3><br>
                 <div class="row mb-3">

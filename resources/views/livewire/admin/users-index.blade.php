@@ -1,10 +1,5 @@
 <div>
     <div class="card">
-        {{-- <div class="card-header">
-            <h3 class="card-title">Listado de Usuarios</h3>
-            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
-        </div> --}}
-
         {{-- barra de busqueda por parametros --}}
     <div class="card-body">
         <form method="GET" action="{{ route('admin.users.index') }}">

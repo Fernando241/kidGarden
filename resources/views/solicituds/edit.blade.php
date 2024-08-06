@@ -2,13 +2,19 @@
 
 @section('title', 'Datos de la Solicitud')
 
+@section('content_header')
+    <div class="alert alert-info">
+        <h3>Editar Solicitud</h3>
+        <div class="text-right">
+            <a href="{{ route('solicituds.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3>Editar Solicitud</h3>
-                <a href="{{ route('solicituds.index') }}" class="btn btn-primary">Volver</a>
-            </div>
+            
             <div class="card-body">
                 <form action="{{ route('solicituds.update', $solicitud->id) }}" method="POST" id="solicitudForm">
                     @csrf

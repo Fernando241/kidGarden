@@ -3,7 +3,13 @@
 @section('title', 'Editar Estudiante')
 
 @section('content_header')
+<div class="alert alert-info">
     <h2>Editar estudiante</h2>
+    <div class="text-right">
+        <a href="{{ route('estudiantes.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+    </div>
+</div>
+    
 @stop
 
 @section('content')

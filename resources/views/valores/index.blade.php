@@ -3,25 +3,23 @@
 @section('title', 'Costos Educativos')
 
 @section('content_header')
-    <div class="card" style="text-align: center">
-        <h1  class="text-primary"> <b>Valores Educativos</b> </h1><br>
-        <h4 class="text-primary">Para el año vigente</h4>
+<div class="alert alert-info" style="text-align: center">
+    <h1><strong>Valores Educativos</strong></h1>
+    <h4>Para el año vigente</h4>
+    <div class="text-right">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
     </div>
+</div>
 @stop
 
 @section('content')
+<div class="card-body">
     {{-- agregar nuevo valor educativo --}}
     @can('valores.create')
         <a href="{{ route('valores.create') }}" class="btn btn-primary">Agregar Nuevo Valor</a>
     @endcan
     
 
-    <div class="card-header">
-        <h3 class="card-title">Valores Educativos</h3>
-        <div class="card-tools">
-            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver</a>
-        </div>
-    </div>
     <div class="card-body">
         <div class="card">
             <table class="table table-striped">
@@ -56,4 +54,6 @@
             </table>
         </div>
     </div>
+</div>
+    
 @stop

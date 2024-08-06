@@ -3,12 +3,10 @@
 @section('title', 'Editar Banco')
 
 @section('content_header')
-    <div class="row mb-4">
-        <div class="col-md-10">
-            <h3>Editar Banco</h3>
-        </div>
-        <div class="col-md-2 text-right">
-            <a href="{{ route('bancos.index') }}" class="btn btn-primary">Volver</a>
+    <div class="alert alert-info">
+        <h1>Editar Banco</h1>
+        <div class="text-right">
+            <a href="{{ route('bancos.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
         </div>
     </div>
 @stop
@@ -16,9 +14,6 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Nuevo Banco</h3>
-            </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('bancos.update', $banco->id) }}" id="solicitudForm">
                     @csrf

@@ -69,7 +69,7 @@ class estudianteController extends Controller
             return response()->json($estudiante);
         }
 
-        return response()->json(['error' => 'Estudiante no encontrado'], 404);
+        return response()->json(['error' => 'No se encontro un estudiante asociado a este número de documento!'], 404);
     }
 
     public function update(Request $request, $id) //para actualiza un registro

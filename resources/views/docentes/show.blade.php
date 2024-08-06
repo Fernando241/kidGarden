@@ -3,12 +3,10 @@
 @section('title', 'Datos Docente')
 
 @section('content_header')
-    <div class="row mb-4">
-        <div class="col-md-10">
-            <h1>Detalles del Docente</h1>
-        </div>
-        <div class="col-md-2 text-right">
-            <a href="{{ route('docentes.index') }}" class="btn btn-primary">Volver</a>
+    <div class="alert alert-info">
+        <h1>Detalles del Docente</h1>
+        <div class="text-right">
+            <a href="{{ route('docentes.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
         </div>
     </div>
 @stop

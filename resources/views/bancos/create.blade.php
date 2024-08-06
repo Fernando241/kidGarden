@@ -3,22 +3,17 @@
 @section('title', 'Nuevo Banco')
 
 @section('content_header')
-    <div class="row mb-4">
-        <div class="col-md-10">
-            <h3>Registrar Nuevo Banco</h3>
-        </div>
-        <div class="col-md-2 text-right">
-            <a href="{{ route('bancos.index') }}" class="btn btn-primary">Volver</a>
-        </div>
+<div class="alert alert-info">
+    <h1>Registrar nuevo Banco</h1>
+    <div class="text-right">
+        <a href="{{ route('bancos.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
     </div>
+</div>
 @stop
 
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Nuevo Banco</h3>
-            </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('bancos.store') }}" id="solicitudForm">
                     @csrf

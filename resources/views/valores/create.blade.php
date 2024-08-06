@@ -3,7 +3,12 @@
 @section('title', 'nuevo docente')
 
 @section('content_header')
-    <h2>Registrar Nuevo Valor Académico</h2>
+<div class="alert alert-info">
+    <h1>Registrar nuevo valor educativo</h1>
+    <div class="text-right">
+        <a href="{{ route('valores.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+    </div>
+</div>
 @stop
 
 @section('content')

@@ -3,10 +3,16 @@
 @section('title', 'Cupos Solicitados')
 
 @section('content_header')
-    <h1>Lista de Cupos Solicitado</h1>
+    <div class="alert alert-info">
+        <h1>Lista de Cupos Solicitado</h1>
+        <div class="text-right">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+        </div>
+    </div>
 @stop
 
 @section('content')
+<div class="card">
     {{-- barra de busqueda por parametros --}}
     <div class="card-body">
         <form method="GET" action="{{ route('solicituds.index') }}">
@@ -73,6 +79,8 @@
             {{ $solicituds->links() }}
         </div>
     </div>
+</div>
+    
 @stop
 
 @section('js')

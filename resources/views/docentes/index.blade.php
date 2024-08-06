@@ -3,10 +3,16 @@
 @section('title', 'Docentes')
 
 @section('content_header')
-    <h2>Lista de Docentes</h2>
+<div class="alert alert-info">
+    <h1>Lista de Docentes</h1>
+    <div class="text-right">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+    </div>
+</div>
 @stop
 
 @section('content')
+<div class="card">
     {{-- agregar nuevo docente --}}
     <div class="card-header">
         <a href="{{ route('docentes.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Añadir Docente</a>
@@ -67,6 +73,8 @@
                 {{ $docentes->links() }}
             </div>
         </div>
+</div>
+    
 @stop
 
 @section('js')

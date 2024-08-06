@@ -5,6 +5,9 @@
 @section('content_header')
 <div class="alert alert-info">
     <h2>Crear Nuevo Estudiante</h2>
+    <div class="text-right">
+        <a href="{{ route('estudiantes.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+    </div>
     <p>Nota: Para crear un nuevo estudiante registre primero el acudiente en la tabla correspondiente</p>
 </div>
 @stop
@@ -61,10 +64,6 @@
                         @endforeach
                     </select>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="acudiente_id">Acudiente</label>
-                    <input type="text" class="form-control text-center" id="acudiente_id" name="acudiente_id" required>
-                </div> --}}
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>

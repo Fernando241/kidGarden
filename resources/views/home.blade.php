@@ -3,9 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<div class="card">
+<div class="alert alert-info" style="text-align: center">
     <br>
-    <h3 class="text-primary"><strong class="text-blue">Jardín Infantil Genios Del Saber</strong></h3>
+    <h1 class="text-primary"><strong style="color: white">Jardín Infantil Genios Del Saber</strong></h1>
     <h5>Bienvenid@:  {{ auth()->user()->name }}!</h5><br>
 </div>
 

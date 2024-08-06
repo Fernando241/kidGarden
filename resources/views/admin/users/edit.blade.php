@@ -3,10 +3,12 @@
 @section('title', 'Usuarios')
 
 @section('content_header')
+    <div class="alert alert-info">
         <h1>Asignar un rol</h1>
-        <div class="card-header text-right">
-            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Volver</a>
-        </div>
+            <div class="card-header text-right">
+                <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Volver</a>
+            </div>
+    </div>
 @stop
 
 @section('content')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcudienteController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\administradorController;
 use App\Http\Controllers\BancoController;
@@ -59,6 +60,10 @@ Route::resource('/solicituds', solicitudController::class)->names('solicituds');
 /*  rutas para llamar los datos de la tabla estudiantes */
 
 Route::resource('/estudiantes', estudianteController::class)->middleware('can:estudiantes')->names('estudiantes');
+
+//rutas para llamar los datos de la tabla acudientes
+
+Route::resource('/acudientes', AcudienteController::class)->middleware('can:acudientes')->names('acudientes');
 
 //rutas para llamar datos de la tabla Cursos
 

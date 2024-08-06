@@ -342,11 +342,11 @@ return [
             'can' =>'solicitudes',
         ],
         [
-            'text' => 'Estudiantes',
-            'route' => 'estudiantes.index',          //aqui esta la clave para colocar la información que necesito en mi home, falta mirar el otro recurso de multipestaña en adminlte
-            'icon' => 'fas fa-fw fa-solid fa-user-graduate',
-            'active' => ['estudiantes*'],
-            'can' => 'estudiantes',
+            'text' => 'Docentes',
+            'route' => 'docentes.index',
+            'icon' => 'fas fa-fw fa-solid fa-user-tie',
+            'active' => ['docentes*'],
+            'can' => 'docentes',
         ],
         [
             'text' => 'Cursos',
@@ -356,18 +356,18 @@ return [
             'can' => 'cursos',
         ],
         [
-            'text' => 'Docentes',
-            'route' => 'docentes.index',
-            'icon' => 'fas fa-fw fa-solid fa-user-tie',
-            'active' => ['docentes*'],
-            'can' => 'docentes',
+            'text' => 'Acudientes',
+            'route' => 'acudientes.index',
+            'icon' => 'fas fa-fw fa-solid fa-user-friends',
+            'active' => ['acudientes*'],
+            'can' => 'acudientes',
         ],
         [
-            'text' => 'Matriculas',
-            'route' => 'matriculas.index',
-            'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
-            'active' => ['matriculas*'],
-            'can' =>'matriculas',
+            'text' => 'Estudiantes',
+            'route' => 'estudiantes.index',
+            'icon' => 'fas fa-fw fa-solid fa-user-graduate',
+            'active' => ['estudiantes*'],
+            'can' => 'estudiantes',
         ],
         [
             'text' => 'Valores Educativos',
@@ -375,6 +375,15 @@ return [
             'icon' => 'fas fa-fw fa-solid fa-dollar-sign',
             'active' => ['valores*'],
         ],
+        
+        [
+            'text' => 'Matriculas',
+            'route' => 'matriculas.index',
+            'icon' => 'fas fa-fw fa-solid fa-graduation-cap',
+            'active' => ['matriculas*'],
+            'can' =>'matriculas',
+        ],
+        
         [
             'text' => 'Bancos',
             'route' => 'bancos.index',

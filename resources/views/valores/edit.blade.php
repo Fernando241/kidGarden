@@ -3,11 +3,11 @@
 @section('title', 'Editar Valores')
     
 @section('content_header')
-    <div class="card-header">
+    <div class="alert alert-info">
         <h2>Editar Valor</h2>
-    <div class="text-right">
-        <a href="{{ route('valores.index') }}" class="btn btn-primary">Volver</a>
-    </div>
+        <div class="text-right">
+            <a href="{{ route('valores.index') }}" class="btn btn-primary" style="text-decoration: none">Volver</a>
+        </div>
     </div>
 @stop
 

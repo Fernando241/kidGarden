@@ -26,8 +26,7 @@ class MatriculaController extends Controller
     public function create()
     {
         $cursos = Curso::all();
-        $acudiente = Acudiente::all();
-        return view('matriculas.create', compact('cursos', 'acudiente'));
+        return view('matriculas.create', compact('cursos'));
     }
 
         /**
@@ -35,24 +34,33 @@ class MatriculaController extends Controller
      */
     public function store(Request $request)
     {
-        $estudiante_id = $request->input('estudiante_id');
-        $acudiente_id = $request->input('acudiente_id');
-        $curso_id = $request->input('curso_id');
+        $validatedData = $request->validate([
+            'estudiante_id' => 'required|exists:estudiantes,idEstudiante',
+            'acudiente_id' => 'required|exists:acudientes,id',
+            'curso_id' => 'required|exists:cursos,idCurso',
+            'situacion' => 'required|string|in:nuevo estudiante,promovido,repitente',
+            'procedencia' => 'required|string|in:Misma Institución,Otra Institución',
+        ]);
 
-        $estudiante = Estudiante::find($estudiante_id);
-        $acudiente = Acudiente::find($acudiente_id);
-        $curso = Curso::find($curso_id);
+        // Carga los modelos relacionados para la generación del código
+        $estudiante = Estudiante::where('idEstudiante', $validatedData['estudiante_id'])->firstOrFail();
+        $acudiente = Acudiente::findOrFail($validatedData['acudiente_id']);
+        $curso = Curso::where('idCurso', $validatedData['curso_id'])->firstOrFail();
 
-        $codigo_matricula = $estudiante->documento . $acudiente->id . $curso->id;
+        // Genera el código de matrícula
+        $codigo_matricula = $estudiante->documento . $acudiente->id . $curso->idCurso;
 
+        // Crea la nueva matrícula
         $matricula = new Matricula();
         $matricula->codigo_matricula = $codigo_matricula;
-        $matricula->estudiante_id = $estudiante_id;
-        $matricula->acudiente_id = $acudiente_id;
-        $matricula->curso_id = $curso_id;
+        $matricula->estudiante_id = $validatedData['estudiante_id'];
+        $matricula->acudiente_id = $validatedData['acudiente_id'];
+        $matricula->curso_id = $validatedData['curso_id'];
+        $matricula->situacion = $validatedData['situacion'];
+        $matricula->procedencia = $validatedData['procedencia'];
         $matricula->save();
 
-        return redirect()->route('matriculas.create')->with('success', 'Matrícula creada exitosamente.');
+        return redirect()->route('matriculas.index');
     }
 
     /**
