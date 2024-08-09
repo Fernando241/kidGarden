@@ -26,12 +26,8 @@
                     <input type="text" class="form-control" id="documento" name="documento" value="{{ $acudiente->documento_acudiente }}">
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Nombres:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombres_acudiente" value="{{ $acudiente->nombres_acudiente }}">
-                </div>
-                <div class="form-group">
-                    <label for="apellido">Apellidos:</label>
-                    <input type="text" class="form-control" id="apellido" name="apellidos_acudiente" value="{{ $acudiente->apellidos_acudiente }}">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre_acudiente" value="{{ $acudiente->nombre_acudiente }}">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>

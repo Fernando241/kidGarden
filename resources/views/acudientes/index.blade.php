@@ -36,8 +36,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Documento</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
+                        <th>Nombre Completo</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
                         <th colspan="2">Acciones</th>
@@ -48,8 +47,7 @@
                         <tr>
                             <td>{{ $acudiente->id }}</td>
                             <td>{{ $acudiente->documento_acudiente }}</td>
-                            <td>{{ $acudiente->nombres_acudiente }}</td>
-                            <td>{{ $acudiente->apellidos_acudiente }}</td>
+                            <td>{{ $acudiente->nombre_acudiente }}</td>
                             <td>{{ $acudiente->telefono }}</td>
                             <td>{{ $acudiente->correo }}</td>
                             <td>

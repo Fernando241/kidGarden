@@ -16,8 +16,7 @@ class AcudienteController extends Controller
         $search = $request->query('search');
         $acudientes = Acudiente::when($search, function ($query, $search) {
             return $query->where('documento_acudiente', 'like', "%{$search}%")
-                        ->orWhere('nombres_acudiente', 'like', "%{$search}%")
-                        ->orWhere('apellidos_acudiente', 'like', "%{$search}%")
+                        ->orWhere('nombre_acudiente', 'like', "%{$search}%")
                         ->orWhere('correo', 'like', "%{$search}%");
         })->paginate(15);
         

@@ -60,7 +60,16 @@
                                 <a href="{{ route('solicituds.show', $solicitud->id) }}"><i class="fas fa-eye"></i></a>
                             </td>
                             <td>
-                                <a href="{{ route('solicituds.edit', $solicitud->id) }}"><i class="fas fa-edit"></i></a>
+                                @if ($solicitud->estado == 'en_proceso')
+                                    <form id="accept-form-{{ $solicitud->id }}" action="{{ route('solicituds.accept', $solicitud->id) }}" method="POST">
+                                        @csrf
+                                        <a href="#" onclick="confirmAccept({{ $solicitud->id }})">
+                                            <i class="fas fa-check" style="color: green;"></i> Aceptar Solicitud
+                                        </a>
+                                    </form>
+                                @else
+                                    <a href="{{ route('solicituds.show', $solicitud->id) }}" style="color: blue"><i class="fas fa-check"></i> Solicitud Aceptada</i></a>
+                                @endif
                             </td>
                             <td>
                                 <form id="delete-form-{{ $solicitud->id }}" action="{{ route('solicituds.destroy', $solicitud->id) }}" method="POST">
@@ -103,6 +112,13 @@
             }
         });
     }
+
+    function confirmAccept(id) {
+        if (confirm('¿Está seguro de aceptar esta solicitud?')) {
+            document.getElementById('accept-form-' + id).submit();
+        }
+    }
+    
 </script>
 
 @stop

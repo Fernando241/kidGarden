@@ -74,4 +74,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Solicitud::class)->where('estado', 'en_proceso');
     }
+
 }

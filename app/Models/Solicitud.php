@@ -8,7 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Solicitud extends Model
 {
     use HasFactory;
-    protected $fillable = ['tipo_documento', 'documento', 'nombres', 'apellidos', 'fecha_nacimiento', 'grado', 'tipo_documento_padre', 'documento_padre', 'nombres_padre', 'apellidos_padre', 'telefono', 'direccion', 'correo', 'parentesco'];
+    protected $fillable = [
+        'tipo_documento', 
+        'documento', 
+        'nombres', 
+        'apellidos', 
+        'fecha_nacimiento', 
+        'grado', 
+        'tipo_documento_acudiente', 
+        'documento_acudiente', 
+        'nombre_acudiente', 
+        'telefono',
+        'direccion', 
+        'correo', 
+        'parentesco', 
+        'user_id'];
 
     public function user()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Solicitud;
 use App\Models\User;
 use App\Models\Acudiente;
@@ -27,9 +28,7 @@ class SolicitudController extends Controller
     
     public function create()
     {
-        /* return view('solicituds.create'); */
-
-        $user = auth()->user();
+        $user = Auth::user();
 
         // Verificar si el usuario ya tiene una solicitud en proceso
         $solicitudExistente = Solicitud::where('user_id', $user->id)->where('estado', 'en_proceso')->first();
@@ -38,42 +37,74 @@ class SolicitudController extends Controller
             return redirect()->route('solicituds.existing');
         }
 
-        return view('solicituds.create');
+        return view('solicituds.create', compact('user'));
         
     }
 
     //para mostra el estado de la solicitud
-
         public function existing()
     {
         return view('solicituds.existing');
     }
 
+    //función para aceptar la solicitud directamente desde la vista solicituds.index
+    public function accept($id)
+    {
+        $solicitud = Solicitud::findOrFail($id);
 
+        // Crear el registro del acudiente
+        $acudiente = Acudiente::create([
+            'tipo_documento_acudiente' => $solicitud->tipo_documento_acudiente,
+            'documento_acudiente' => $solicitud->documento_acudiente,
+            'nombre_acudiente' => $solicitud->nombre_acudiente,
+            'telefono' => $solicitud->telefono,
+            'direccion' => $solicitud->direccion,
+            'correo' => $solicitud->correo,
+            'parentesco' => $solicitud->parentesco,
+            'user_id' => $solicitud->user_id,
+        ]);
+
+        // Crear el registro del estudiante
+        Estudiante::create([
+            'tipo_documento' => $solicitud->tipo_documento,
+            'documento' => $solicitud->documento,
+            'nombres' => $solicitud->nombres,
+            'apellidos' => $solicitud->apellidos,
+            'fecha_nacimiento' => $solicitud->fecha_nacimiento,
+            'grado' => $solicitud->grado,
+            'acudiente_id' => $acudiente->id,
+        ]);
+
+        // Actualizar el estado de la solicitud
+        $solicitud->estado = 'aprobada';
+        $solicitud->save();
+
+        return redirect()->route('solicituds.index')->with('success', 'Solicitud aceptada exitosamente.');
+    }
     
     public function store(Request $request)
     {
         // Crear una nueva solicitud
-        $solicitud = new Solicitud([
-            'tipo_documento' => $request->input('tipo_documento'),
-            'documento' => $request->input('documento'),
-            'nombres' => $request->input('nombres'),
-            'apellidos' => $request->input('apellidos'),
-            'fecha_nacimiento' => $request->input('fecha_nacimiento'),
-            'grado' => $request->input('grado'),
-            'tipo_documento_padre' => $request->input('tipo_documento_padre'),
-            'documento_padre' => $request->input('documento_padre'),
-            'nombres_padre' => $request->input('nombres_padre'),
-            'apellidos_padre' => $request->input('apellidos_padre'),
-            'telefono' => $request->input('telefono'),
-            'direccion' => $request->input('direccion'),
-            'correo' => $request->input('correo'),
-            'parentesco' => $request->input('parentesco'),
+        $validatedData = $request->validate([
+            'tipo_documento' => 'required|in:nacido vivo,registro civil,tarjeta de identidad,tarjeta de extranjería',
+            'documento' => 'required|string|max:15',
+            'nombres' => 'required|string|max:50',
+            'apellidos' => 'required|string|max:50',
+            'fecha_nacimiento' => 'required|date',
+            'grado' => 'required|in:Parvulos,Pre Jardin,Jardin,Transicion',
+            'tipo_documento_acudiente' => 'required|in:cédula de ciudadanía,cédula de extranjería',
+            'documento_acudiente' => 'required|string|max:20',
+            'nombre_acudiente' => 'required|string|max:50',
+            'telefono' => 'required|string|max:15',
+            'direccion' => 'required|string',
+            'correo' => 'required|string|email|max:100',
+            'parentesco' => 'required|string|max:30',
         ]);
 
-        // Asignar el ID del usuario actual a la solicitud
-        $solicitud->user_id = auth()->id(); // Esto relaciona la solicitud con el usuario
-
+        // Crear una nueva solicitud con los datos validados
+        $solicitud = new Solicitud($validatedData);
+        $solicitud->user_id = Auth::id(); // Asocia la solicitud con el usuario autenticado
+        $solicitud->estado = 'en_proceso'; // Estado por defecto
         $solicitud->save();
 
         return view('inicio');
@@ -103,10 +134,9 @@ class SolicitudController extends Controller
             'apellidos' => 'required|max:50',
             'fecha_nacimiento' => 'required|date',
             'grado' => 'required',
-            'tipo_documento_padre' => 'required',
-            'documento_padre' => 'required|max:15',
-            'nombres_padre' => 'required|max:50',
-            'apellidos_padre' => 'required|max:50',
+            'tipo_documento_acudiente' => 'required',
+            'documento_acudiente' => 'required|max:15',
+            'nombre_acudiente' => 'required|max:50',
             'telefono' => 'required|max:15',
             'direccion' => 'required',
             'correo' => 'required|email|max:100',
@@ -121,10 +151,9 @@ class SolicitudController extends Controller
         $solicitud->apellidos = $request->input('apellidos');
         $solicitud->fecha_nacimiento = $request->input('fecha_nacimiento');
         $solicitud->grado = $request->input('grado');
-        $solicitud->tipo_documento_padre = $request->input('tipo_documento_padre');
-        $solicitud->documento_padre = $request->input('documento_padre');
-        $solicitud->nombres_padre = $request->input('nombres_padre');
-        $solicitud->apellidos_padre = $request->input('apellidos_padre');
+        $solicitud->tipo_documento_acudiente = $request->input('tipo_documento_acudiente');
+        $solicitud->documento_acudiente = $request->input('documento_acudiente');
+        $solicitud->nombre_acudiente = $request->input('nombre_acudiente');
         $solicitud->telefono = $request->input('telefono');
         $solicitud->direccion = $request->input('direccion');
         $solicitud->correo = $request->input('correo');
@@ -134,10 +163,9 @@ class SolicitudController extends Controller
 
         // Crear el acudiente
         $acudiente = Acudiente::create([
-            'tipo_documento_acudiente' => $solicitud->tipo_documento_padre,
-            'documento_acudiente' => $solicitud->documento_padre,
-            'nombres_acudiente' => $solicitud->nombres_padre,
-            'apellidos_acudiente' => $solicitud->apellidos_padre,
+            'tipo_documento_acudiente' => $solicitud->tipo_documento_acudiente,
+            'documento_acudiente' => $solicitud->documento_acudiente,
+            'nombre_acudiente' => $solicitud->nombre_acudiente,
             'telefono' => $solicitud->telefono,
             'direccion' => $solicitud->direccion,
             'correo' => $solicitud->correo,

@@ -32,12 +32,8 @@
                         <input type="text" class="form-control" id="documento" name="documento_acudiente" required>
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Nombres:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombres_acudiente" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellido">Apellidos:</label>
-                        <input type="text" class="form-control" id="apellido" name="apellidos_acudiente" required>
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre_acudiente" required>
                     </div>
                     <div class="form-group">
                         <label for="telefono">Teléfono:</label>

@@ -19,17 +19,18 @@ return new class extends Migration
             $table->string('apellidos', 50);
             $table->date('fecha_nacimiento');
             $table->enum('grado', ['Parvulos','Pre Jardin', 'Jardin', 'Transicion']);
-            $table->enum('tipo_documento_padre', ['cédula de ciudadanía', 'cédula de extranjería']);
-            $table->string('documento_padre', 15);
-            $table->string('nombres_padre', 50);
-            $table->string('apellidos_padre', 50);
+            $table->enum('tipo_documento_acudiente', ['cédula de ciudadanía', 'cédula de extranjería']);
+            $table->string('documento_acudiente', 20);
+            $table->string('nombre_acudiente', 50);
             $table->string('telefono', 15);
             $table->string('direccion');
             $table->string('correo', 100);
             $table->string('parentesco', 30);
-            $table->foreignId('user_id')->constrained(); //campo para crear la realación al usuario que envia la solicitud
+            $table->unsignedBigInteger('user_id'); //campo para crear la relación al usuario que envia la solicitud
             $table->enum('estado', ['en_proceso', 'aprobada', 'rechazada'])->default('en_proceso');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

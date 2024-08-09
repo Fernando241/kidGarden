@@ -19,12 +19,12 @@ class AcudienteFactory extends Factory
         return [
         'tipo_documento_acudiente' => $this->faker->randomElement(['cédula de ciudadanía', 'cédula de extranjería']),
         'documento_acudiente' => $this->faker->unique()->numberBetween(88100000, 1024000000),
-        'nombres_acudiente' => $this->faker->name(),
-        'apellidos_acudiente' => $this->faker->lastName(),
+        'nombre_acudiente' => $this->faker->name(),
         'telefono' => $this->faker->phoneNumber(),
         'direccion' => $this->faker->address(),
         'correo' => $this->faker->unique()->safeEmail,
         'parentesco' => $this->faker->randomElement(['padre', 'madre', 'abuelo', 'abuela', 'hermano', 'tio']),
+        'user_id' => \App\Models\User::factory(), // Relación con User
         ];
     }
 }

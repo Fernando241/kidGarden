@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->enum('tipo_documento_acudiente', ['cédula de ciudadanía', 'cédula de extranjería']);
             $table->string('documento_acudiente', 20);
-            $table->string('nombres_acudiente', 50);
-            $table->string('apellidos_acudiente', 50);
+            $table->string('nombre_acudiente', 50);
             $table->string('telefono', 20);
             $table->string('direccion');
             $table->string('correo', 150);
             $table->string('parentesco', 40);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relación con users
             $table->timestamps();
         });
     }

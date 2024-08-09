@@ -50,22 +50,18 @@
                 <h3 style="text-align: center">Datos del Acudiente</h3><br>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <strong>Tipo de Documento del Padre:</strong>
-                        <p>{{ $solicitud->tipo_documento_padre }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <strong>Documento del Padre:</strong>
-                        <p>{{ $solicitud->documento_padre }}</p>
+                        <strong>Tipo de Documento del Acudiente:</strong>
+                        <p>{{ $solicitud->tipo_documento_acudiente }}</p>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <strong>Nombres del Padre:</strong>
-                        <p>{{ $solicitud->nombres_padre }}</p>
+                        <strong>Documento del Acudiente:</strong>
+                        <p>{{ $solicitud->documento_acudiente }}</p>
                     </div>
                     <div class="col-md-6">
-                        <strong>Apellidos del Padre:</strong>
-                        <p>{{ $solicitud->apellidos_padre }}</p>
+                        <strong>Nombre del Acudiente:</strong>
+                        <p>{{ $solicitud->nombre_acudiente }}</p>
                     </div>
                 </div>
                 <div class="row mb-3">

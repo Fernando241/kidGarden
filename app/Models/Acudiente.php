@@ -12,12 +12,12 @@ class Acudiente extends Model
     protected $fillable = [
         'tipo_documento_acudiente',
         'documento_acudiente',
-        'nombres_acudiente',
-        'apellidos_acudiente',
+        'nombre_acudiente',
         'telefono',
         'direccion',
         'correo',
-        'parentesco'
+        'parentesco',
+        'user_id',
     ];
 
     public function estudiantes()

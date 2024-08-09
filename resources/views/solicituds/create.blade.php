@@ -56,24 +56,21 @@
                 <hr>
                 <p class="datos">Datos del Representante o Acudiente</p><br>
                 <div class="campos">
-                    <label for="tipo_documento_padre">Tipo de documento *</label>
-                    <select name="tipo_documento_padre" id="tipo_documento_padre" required>
+                    <label for="tipo_documento_acudiente">Tipo de documento *</label>
+                    <select name="tipo_documento_acudiente" id="tipo_documento_acudiente" required>
                         <option value="">Seleccionar</option>
                         <option value="cédula de ciudadanía">Cédula de Ciudadania</option>
                         <option value="cédula de extranjería">Cédula de Extranjeria</option>
                     </select>
                 </div>
                 <div class="campos">
-                    <label for="documento_padre">documento *</label>
-                    <input type="number" name="documento_padre" id="documento_padre" placeholder="documento del Acudiente" required>
+                    <label for="documento_acudiente">documento *</label>
+                    <input type="number" name="documento_acudiente" id="documento_acudiente" placeholder="documento del Acudiente" required>
                 </div>
                 <div class="campos">
-                    <label for="nombres_padre">Nombres *</label>
-                    <input type="text" name="nombres_padre" id="nombres_padre" placeholder="Nombres del Acudiente" required>
-                </div>
-                <div class="campos">
-                    <label for="apellidos_padre">Apellidos *</label>
-                    <input type="text" name="apellidos_padre" id="apellidos_padre" placeholder="Apellidos del Acudiente" required>
+                    <label for="nombre_acudiente">Nombre *</label>
+                    {{-- <input type="text" name="nombres_acudiente" id="nombres_acudiente" placeholder="Nombres del Acudiente" required> --}}
+                    <input type="text" id="nombre_acudiente" name="nombre_acudiente" value="{{ $user->name }}" readonly>
                 </div>
                 <div class="campos">
                     <label for="telefono">Teléfono *</label>
@@ -85,7 +82,8 @@
                 </div>
                 <div class="campos">
                     <label for="correo">correo *</label>
-                    <input type="email" name="correo" id="correo" placeholder="correo electrónico" required="required">
+                    {{-- <input type="email" name="correo" id="correo" placeholder="correo electrónico" required="required"> --}}
+                    <input type="email" id="correo" name="correo" value="{{ $user->email }}" readonly>
                 </div>
                 <div class="campos">
                     <label for="parentesco">Parentesco *</label>

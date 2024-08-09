@@ -56,6 +56,8 @@ Route::get('/niveles', [nivelesController::class, 'niveles']);
 
 Route::get('/solicituds/existing', [SolicitudController::class, 'existing'])->name('solicituds.existing');
 Route::resource('/solicituds', solicitudController::class)->names('solicituds');
+Route::post('/solicituds/accept/{id}', [SolicitudController::class, 'accept'])->name('solicituds.accept'); //ruta para el index de solicitud para aceptar la solicitud directamente
+
 
 /*  rutas para llamar los datos de la tabla estudiantes */
 
