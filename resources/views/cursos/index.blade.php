@@ -57,7 +57,7 @@
                             <a href="{{ route('cursos.edit', $curso->idCurso) }}"><i class="fas fa-edit"></i></a>
                         </td>
                         <td>
-                            <form action="{{ route('cursos.destroy', $curso->idCurso) }}" method="POST">
+                            <form id="delete-form-{{ $curso->idCurso }}" action="{{ route('cursos.destroy', $curso->idCurso) }}" method="POST">
                                 @csrf
                                 @method('DELETE')  
                                 <a href="#" onclick="confirmDelete({{ $curso->idCurso }})">

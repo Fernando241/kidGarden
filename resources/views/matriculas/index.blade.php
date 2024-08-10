@@ -41,7 +41,7 @@
                             <th>Estudiante</th>
                             <th>Curso</th>
                             <th>Fecha Matrícula</th>
-                            <th>Acciones</th>
+                            <th colspan="2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +53,18 @@
                                 <td>{{ $matricula->created_at ? $matricula->created_at->format('d/m/Y') : 'No disponible' }}</td>
                                 <td>
                                     <a href="{{ route('matriculas.show', $matricula->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                </td>
+                                <td>    
                                     <a href="{{ route('matriculas.edit', $matricula->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                </td>
+                                <td>
+                                    <form id="delete-form-{{ $matricula->id }}" action="{{ route('matriculas.destroy', $matricula->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="#" onclick="confirmDelete({{ $matricula->id }})" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt" style="color: white;"></i>
+                                        </a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -62,4 +73,28 @@
             </div>
         </div>
     </div>            
+@stop
+
+@section('js')
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
+
 @stop

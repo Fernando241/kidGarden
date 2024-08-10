@@ -120,70 +120,13 @@ class SolicitudController extends Controller
     
     public function edit($id)
     {
-        $solicitud = Solicitud::find($id);
-        return view('solicituds.edit', compact('solicitud'));
+        //
     }
 
     
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'tipo_documento' => 'required',
-            'documento' => 'required|max:15',
-            'nombres' => 'required|max:50',
-            'apellidos' => 'required|max:50',
-            'fecha_nacimiento' => 'required|date',
-            'grado' => 'required',
-            'tipo_documento_acudiente' => 'required',
-            'documento_acudiente' => 'required|max:15',
-            'nombre_acudiente' => 'required|max:50',
-            'telefono' => 'required|max:15',
-            'direccion' => 'required',
-            'correo' => 'required|email|max:100',
-            'parentesco' => 'required|max:30',
-            'estado' => 'required|string',
-        ]);
-    
-        $solicitud = Solicitud::find($id);
-        $solicitud->tipo_documento = $request->input('tipo_documento');
-        $solicitud->documento = $request->input('documento');
-        $solicitud->nombres = $request->input('nombres');
-        $solicitud->apellidos = $request->input('apellidos');
-        $solicitud->fecha_nacimiento = $request->input('fecha_nacimiento');
-        $solicitud->grado = $request->input('grado');
-        $solicitud->tipo_documento_acudiente = $request->input('tipo_documento_acudiente');
-        $solicitud->documento_acudiente = $request->input('documento_acudiente');
-        $solicitud->nombre_acudiente = $request->input('nombre_acudiente');
-        $solicitud->telefono = $request->input('telefono');
-        $solicitud->direccion = $request->input('direccion');
-        $solicitud->correo = $request->input('correo');
-        $solicitud->parentesco = $request->input('parentesco');
-        $solicitud->estado = $request->input('estado');
-        $solicitud->save();
-
-        // Crear el acudiente
-        $acudiente = Acudiente::create([
-            'tipo_documento_acudiente' => $solicitud->tipo_documento_acudiente,
-            'documento_acudiente' => $solicitud->documento_acudiente,
-            'nombre_acudiente' => $solicitud->nombre_acudiente,
-            'telefono' => $solicitud->telefono,
-            'direccion' => $solicitud->direccion,
-            'correo' => $solicitud->correo,
-            'parentesco' => $solicitud->parentesco
-        ]);
-
-        // Crear el estudiante
-        Estudiante::create([
-            'tipo_documento' => $solicitud->tipo_documento,
-            'documento' => $solicitud->documento,
-            'nombres' => $solicitud->nombres,
-            'apellidos' => $solicitud->apellidos,
-            'fecha_nacimiento' => $solicitud->fecha_nacimiento,
-            'grado' => $solicitud->grado,
-            'acudiente_id' => $acudiente->id
-        ]);
-    
-        return redirect()->route('solicituds.index');
+        //
     }
 
     

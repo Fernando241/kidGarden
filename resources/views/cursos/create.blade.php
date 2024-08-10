@@ -52,24 +52,6 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label>Estudiantes Asignados</label>
-                        <div>
-                            
-                            
-                            <div class="form-group">
-                                <label>Estudiantes Asignados</label>
-                                <div>
-                                    @foreach ($estudiantesDisponibles as $estudiante)
-                                        <div>
-                                            <input type="checkbox" name="estudiantes[]" value="{{ $estudiante->idEstudiante }}">
-                                            {{ $estudiante->nombres }} {{ $estudiante->apellidos }}
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary text-right">Guardar Curso</button>
                     </div>

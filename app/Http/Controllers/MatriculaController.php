@@ -8,6 +8,7 @@ use App\Models\Estudiante;
 use App\Models\Matricula;
 use App\Models\Valor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MatriculaController extends Controller
 {
@@ -42,23 +43,20 @@ class MatriculaController extends Controller
             'procedencia' => 'required|string|in:Misma Institución,Otra Institución',
         ]);
 
-        // Carga los modelos relacionados para la generación del código
-        $estudiante = Estudiante::where('idEstudiante', $validatedData['estudiante_id'])->firstOrFail();
-        $acudiente = Acudiente::findOrFail($validatedData['acudiente_id']);
-        $curso = Curso::where('idCurso', $validatedData['curso_id'])->firstOrFail();
-
-        // Genera el código de matrícula
-        $codigo_matricula = $estudiante->documento . $acudiente->id . $curso->idCurso;
-
+        // Asocia el estudiante al curso
+        $estudiante = Estudiante::findOrFail($validatedData['estudiante_id']);
+        $curso = Curso::findOrFail($validatedData['curso_id']);
+        $estudiante->cursos()->attach($curso);
+        
         // Crea la nueva matrícula
-        $matricula = new Matricula();
-        $matricula->codigo_matricula = $codigo_matricula;
-        $matricula->estudiante_id = $validatedData['estudiante_id'];
-        $matricula->acudiente_id = $validatedData['acudiente_id'];
-        $matricula->curso_id = $validatedData['curso_id'];
-        $matricula->situacion = $validatedData['situacion'];
-        $matricula->procedencia = $validatedData['procedencia'];
-        $matricula->save();
+        $matricula = Matricula::create([
+            'codigo_matricula' => Str::uuid(),
+            'estudiante_id' => $validatedData['estudiante_id'],
+            'acudiente_id' => $validatedData['acudiente_id'],
+            'curso_id' => $validatedData['curso_id'],
+            'situacion' => $validatedData['situacion'],
+            'procedencia' => $validatedData['procedencia'],
+        ]);
 
         return redirect()->route('matriculas.index');
     }
@@ -92,8 +90,12 @@ class MatriculaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Matricula $matricula)
+    public function destroy($id)
     {
-        //
+        $matricula = Matricula::find($id);
+        if ($matricula) {
+            $matricula->delete();
+        }
+        return redirect()->route('matriculas.index');
     }
 }
