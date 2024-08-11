@@ -71,7 +71,7 @@
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Su solicitud a sido enviada con exito!',
+                    title: 'Nuevo Curso agregado con exito!',
                     showConfirmButton: false,
                     timer: 1500
                 }).then((result) => {

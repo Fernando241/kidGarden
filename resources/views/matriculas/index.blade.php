@@ -54,9 +54,9 @@
                                 <td>
                                     <a href="{{ route('matriculas.show', $matricula->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                 </td>
-                                <td>    
+                                {{-- <td>    
                                     <a href="{{ route('matriculas.edit', $matricula->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <form id="delete-form-{{ $matricula->id }}" action="{{ route('matriculas.destroy', $matricula->id) }}" method="POST">
                                         @csrf

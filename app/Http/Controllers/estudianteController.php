@@ -60,7 +60,7 @@ class estudianteController extends Controller
         return view('estudiantes.edit', compact('estudiante'));
     }
 
-    //funcion para buscar datos del estudiante en mi vista create
+    //funcion para buscar datos del estudiante en mi vista matriculas.create
     public function buscarEstudiante($documento)
     {
         $estudiante = Estudiante::with('acudiente')->where('documento', $documento)->first(); 

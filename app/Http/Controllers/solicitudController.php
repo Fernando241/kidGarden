@@ -64,6 +64,10 @@ class SolicitudController extends Controller
             'user_id' => $solicitud->user_id,
         ]);
 
+        // Asignar el rol de "Acudiente" al usuario asociado
+        $user = User::findOrFail($solicitud->user_id);
+        $user->assignRole('Acudiente');
+
         // Crear el registro del estudiante
         Estudiante::create([
             'tipo_documento' => $solicitud->tipo_documento,

@@ -69,7 +69,6 @@
                 </div>
                 <div class="campos">
                     <label for="nombre_acudiente">Nombre *</label>
-                    {{-- <input type="text" name="nombres_acudiente" id="nombres_acudiente" placeholder="Nombres del Acudiente" required> --}}
                     <input type="text" id="nombre_acudiente" name="nombre_acudiente" value="{{ $user->name }}" readonly>
                 </div>
                 <div class="campos">
@@ -82,7 +81,6 @@
                 </div>
                 <div class="campos">
                     <label for="correo">correo *</label>
-                    {{-- <input type="email" name="correo" id="correo" placeholder="correo electrónico" required="required"> --}}
                     <input type="email" id="correo" name="correo" value="{{ $user->email }}" readonly>
                 </div>
                 <div class="campos">

@@ -74,7 +74,7 @@ class MatriculaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Matricula $matricula)
+    public function edit($id)
     {
         //
     }
@@ -82,7 +82,7 @@ class MatriculaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Matricula $matricula)
+    public function update(Request $request, $id)
     {
         //
     }
