@@ -383,7 +383,13 @@ return [
             'active' => ['matriculas*'],
             'can' =>'matriculas',
         ],
-        
+        [
+            'text' => 'Pagos',
+            'route' => 'createpaypal',
+            'icon' => 'fas fa-fw fa-solid fa-dollar-sign',
+            'active' => ['pagos*'],
+            /* 'can' =>'pagos', */
+        ],
         [
             'text' => 'Bancos',
             'route' => 'bancos.index',

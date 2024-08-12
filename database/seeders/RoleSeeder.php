@@ -34,6 +34,8 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name' => 'matriculas'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'bancos'])->assignRole([$role1]);
+
+        Permission::create(['name' => 'pagos'])->syncRoles([$role1, $role2, $role4]);
         
     }
 }

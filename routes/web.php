@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\PaypalController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
@@ -93,6 +94,11 @@ Route::resource('users', UserController::class)->middleware('can:usuarios')->onl
 Route::resource('/matriculas', MatriculaController::class)->names('matriculas');
 Route::get('/buscar-estudiante/{documento}', [EstudianteController::class, 'buscarEstudiante']);
 
+//Rutas para pagos por Paypal
 
+Route::get('createpaypal', [PaypalController::class, 'createpaypal'])->name('createpaypal');
+Route::get('processPaypal', [PaypalController::class, 'processPaypal'])->name('processPaypal');
+Route::get('processSuccess', [PaypalController::class, 'processSuccess'])->name('processSuccess');
+Route::get('processCancel', [PaypalController::class, 'processCancel'])->name('processCancel');
 
 
