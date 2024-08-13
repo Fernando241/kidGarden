@@ -384,11 +384,18 @@ return [
             'can' =>'matriculas',
         ],
         [
+        'text' => 'Mis Estudiantes',
+            'route' => 'PerfilEstudiante',
+            'icon' => 'fas fa-fw fa-solid fa-user-graduate',
+            'active' => ['PerfilEstudiante*'],
+            'can' => 'PerfilEstudiante',
+        ],
+        [
             'text' => 'Pagos',
             'route' => 'createpaypal',
             'icon' => 'fas fa-fw fa-solid fa-dollar-sign',
             'active' => ['pagos*'],
-            /* 'can' =>'pagos', */
+            'can' =>'pagos',
         ],
         [
             'text' => 'Bancos',

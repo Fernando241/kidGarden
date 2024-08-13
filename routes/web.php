@@ -22,6 +22,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PerfilEstudianteController;
 
 Route::get('/', [inicioController::class, 'inicio'])->name('inicio');
 
@@ -63,6 +64,8 @@ Route::post('/solicituds/accept/{id}', [SolicitudController::class, 'accept'])->
 /*  rutas para llamar los datos de la tabla estudiantes */
 
 Route::resource('/estudiantes', estudianteController::class)->middleware('can:estudiantes')->names('estudiantes');
+Route::get('PerfilEstudiante', [PerfilEstudianteController::class, 'PerfilEstudiante'])->name('PerfilEstudiante')->middleware('auth');
+
 
 //rutas para llamar los datos de la tabla acudientes
 
@@ -97,8 +100,9 @@ Route::get('/buscar-estudiante/{documento}', [EstudianteController::class, 'busc
 //Rutas para pagos por Paypal
 
 Route::get('createpaypal', [PaypalController::class, 'createpaypal'])->name('createpaypal');
-Route::get('processPaypal', [PaypalController::class, 'processPaypal'])->name('processPaypal');
+Route::post('processPaypal', [PaypalController::class, 'processPaypal'])->name('processPaypal');
 Route::get('processSuccess', [PaypalController::class, 'processSuccess'])->name('processSuccess');
 Route::get('processCancel', [PaypalController::class, 'processCancel'])->name('processCancel');
 
-
+//rutas para editar las noticias de la pagina web
+Route::resource('/noticias', NoticiaController::class)->names('noticias');

@@ -1,26 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregando paypal</title>
-    
-<script src="https://sandbox.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENTE_ID')}}{{-- &components=YOUR_COMPONENTS --}}"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-    <a href="{{ route('processPaypal') }}" class="btn btn-primary">Pay 100$</a>
+@extends('adminlte::page')
+
+@section('title', 'Pagos')
+
+@section('content_header')
+    <h1>Pagos</h1>
+@stop
+
+@section('content')
 
     @if(\Session::has('error'))
-        <div class="alert alert-danger">{{ \Session::get('error') }}</div>
+        <div class="alert alert-warning">{{ \Session::get('error') }}</div>
         {{ \Session::forget('error') }}
     @endif
 
-    
     @if(\Session::has('success'))
         <div class="alert alert-success">{{ \Session::get('success') }}</div>
         {{ \Session::forget('success') }}
-    @endif
-</body>
-</html>
+    @endif    
+    <div class="card">
+        <div class="card-body">
+            <h3>Valores a Pagar</h3>
+            @foreach($valores as $valor)
+                <div class="mb-3">
+                    <h4>{{ $valor->nombre }}</h4>
+                    <p><strong>Valor:</strong> ${{ number_format($valor->valor, 2) }}</p>
+                    <p><strong>Frecuencia de Pago:</strong> {{ $valor->frecuencia_pago }}</p>
+                    {{-- <a href="{{ route('processPaypal') }}" class="btn btn-primary">Pagar ${{ number_format($valor->valor, 2) }}</a> --}}
+                    <form action="{{ route('processPaypal') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="valor_id" value="{{ $valor->id }}">
+                        <button type="submit" class="btn btn-primary">Pagar ${{ number_format($valor->valor, 2) }}</button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+@stop

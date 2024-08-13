@@ -15,7 +15,8 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        //
+        $noticias = Noticia::all();
+        return view('noticias.index', compact('noticias'));
     }
 
     /**

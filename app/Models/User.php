@@ -75,4 +75,10 @@ class User extends Authenticatable
         return $this->hasMany(Solicitud::class)->where('estado', 'en_proceso');
     }
 
+    //para crear relación con el acudiente
+    public function acudiente()
+    {
+        return $this->hasOne(Acudiente::class);
+    }
+
 }

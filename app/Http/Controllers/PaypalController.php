@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Valor;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -9,11 +10,21 @@ class PaypalController extends Controller
 {
     public function createpaypal()
     {
-        return view('pagos.index');
+        $valores = Valor::all(); //llamo al Modelo Valor para optener todos los valores de este tabla
+        return view('pagos.index', compact('valores'));
     }
 
     public function processPaypal(Request $request)
     {
+        // Validar el request para pasar el valor correspondiente
+        
+        $request->validate([
+            'valor_id' => 'required|exists:valores,id',
+        ]);
+
+        // Obtener el valor correspondiente
+        $valor = Valor::find($request->valor_id);
+        //-----------------------------------------------------
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -28,7 +39,7 @@ class PaypalController extends Controller
                 [
                     'amount' => [
                         'currency_code' => 'USD',
-                        'value' => 10.00,
+                        'value' => $valor->valor,
                     ],
                 ],
             ]
