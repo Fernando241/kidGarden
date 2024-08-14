@@ -76,11 +76,12 @@
 
 
                 <button class="nav-boton" onclick="accion()">Menu</button> <!--boton que aparece en pantallas pequeñas y se configura en JavaScrip-->
-                <a href=" {{ url('/')}} " class="nav_menu ocultar">Inicio</a>
-                <a href=" {{ url('/nosotros') }} " class="nav_menu ocultar">Nosotros</a>
-                <a href=" {{ route('galerias.index')}} " class="nav_menu ocultar">Galeria</a>
-                <a href=" {{ route('noticias.index')}} " class="nav_menu ocultar">Publicaciones</a>
-                <a href=" {{ url('/niveles')}} " class="nav_menu ocultar">Niveles</a>
+                <!-- a estos links les agregue la funcion request()->is('/') ? 'active' : '' , para poder marcarlo como pantalla activa -->
+                <a href="{{ url('/') }}" class="nav_menu ocultar {{ request()->is('/') ? 'active' : '' }}">Inicio</a>
+                <a href="{{ url('/nosotros') }}" class="nav_menu ocultar {{ request()->is('nosotros') ? 'active' : '' }}">Nosotros</a>
+                <a href="{{ route('galerias.index') }}" class="nav_menu ocultar {{ request()->routeIs('galerias.index') ? 'active' : '' }}">Galeria</a>
+                <a href="{{ route('noticias.index') }}" class="nav_menu ocultar {{ request()->routeIs('noticias.index') ? 'active' : '' }}">Publicaciones</a>
+                <a href="{{ url('/niveles') }}" class="nav_menu ocultar {{ request()->is('niveles') ? 'active' : '' }}">Niveles</a>
             </div>
             <hr>
         </section> <!--Sección para destinar al contenido informativo de la página-->

@@ -23,7 +23,7 @@
                                                         
                             @if($noticia->imagen)
                                 <div>
-                                    <img src="{{ asset('images/' . $noticia->imagen) }}" alt="Imagen de la noticia" class="img-thumbnail" style="max-width: 300px;">
+                                    <img src="{{ asset('images/' . $noticia->imagen) }}" alt="Imagen de la noticia" class="img-thumbnail" style="width: 80%;">
                                 </div>
                             @else
                                 <p class="columna">No hay imagen para mostrar</p>

@@ -220,9 +220,24 @@ border: 0px solid #000000;
     text-decoration: none;
 }
 
+b{
+    color: #fec303;
+    font-size: 20px;
+}
+
+.cursiva{
+    color: blue;
+    font-size: 15px;
+}
+
 .nav_menu:hover{
     background-color: #02cbda;
     padding: 11px; /*da la impresion de crecer al elemento cuando el mouse esta sobre el*/
+}
+
+.nav_menu.active {
+    background-color: #f0f0f0; /* Cambia esto al color que desees */
+    color: #333; /* Cambia esto al color que desees */
 }
 
 #cupo{  /*id exclusivo para el boton de solicitar cupo*/

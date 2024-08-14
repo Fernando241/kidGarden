@@ -12,11 +12,11 @@
                 @csrf
                 <div>
                     <label for="titulo"><b>Título</b></label><br>
-                    <input type="text" name="titulo" id="titulo">
+                    <input type="text" name="titulo" id="titulo" class="areaText">
                 </div><br>
                 <div>
                     <label for="descripcion"><b>Descripción</b></label><br>
-                    <textarea name="descripcion" id="descripcion"></textarea>
+                    <textarea name="descripcion" id="descripcion" class="areaText"></textarea>
                 </div><br>
                 <div>
                     <label for="fotos"><b>Fotos</b></label><br>
