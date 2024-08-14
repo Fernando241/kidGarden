@@ -106,3 +106,6 @@ Route::get('processCancel', [PaypalController::class, 'processCancel'])->name('p
 
 //rutas para editar las noticias de la pagina web
 Route::resource('/noticias', NoticiaController::class)->names('noticias');
+
+//rutas para la galeria de fotos
+Route::resource('galerias', galeriaController::class)->names('galerias');

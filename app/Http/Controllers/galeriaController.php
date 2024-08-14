@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foto;
 use App\Models\Galeria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriaController extends Controller
 {
 
-    public function galeria()
-    {
-        return view('galeria');
-    }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $galerias = Galeria::orderBy('created_at', 'desc')->paginate(15);
+        return view('galeria.index', compact('galerias'));
     }
 
     /**
@@ -25,7 +21,7 @@ class GaleriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('galeria.create');
     }
 
     /**
@@ -33,7 +29,22 @@ class GaleriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $galeria = Galeria::create($request->only('titulo', 'descripcion'));
+
+        /* if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $fotos) {
+                $path = $fotos->store('fotos');
+                Foto::create(['galeria_id' => $galeria->id, 'ruta_fotos' => $path]);
+            }
+        } */
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $foto) {
+                $path = $foto->store('fotos', 'public');
+                Foto::create(['galeria_id' => $galeria->id, 'ruta_fotos' => $path]);
+            }
+        }
+
+        return redirect()->route('galerias.index');
     }
 
     /**
@@ -44,27 +55,45 @@ class GaleriaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Galeria $galeria)
+        public function edit($id)
     {
-        //
+        $galeria = Galeria::findOrFail($id);
+        return view('galeria.edit', compact('galeria'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Galeria $galeria)
+    public function update(Request $request, $id)
     {
-        //
+        $galeria = Galeria::findOrFail($id);
+        $galeria->update($request->only('titulo', 'descripcion'));
+
+        if ($request->hasFile('fotos')) {
+            foreach ($request->file('fotos') as $foto) {
+                $path = $foto->store('fotos', 'public');
+                Foto::create(['galeria_id' => $galeria->id, 'ruta_fotos' => $path]);
+            }
+        }
+
+        return redirect()->route('galerias.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Galeria $galeria)
+    public function destroy($id)
     {
-        //
+        $galeria = Galeria::findOrFail($id);
+
+        // Eliminar las fotos asociadas
+        foreach ($galeria->fotos as $foto) {
+            // Eliminar el archivo de la foto del almacenamiento
+            Storage::disk('public')->delete($foto->ruta_fotos);
+            // Eliminar el registro de la foto
+            $foto->delete();
+        }
+
+        // Eliminar la galería
+        $galeria->delete();
+
+        return redirect()->route('galerias.index');
     }
 }

@@ -13,17 +13,11 @@ class NoticiaController extends Controller
         return view('noticias.index', compact('noticias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('noticias.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         // Validar los datos del formulario
@@ -52,18 +46,7 @@ class NoticiaController extends Controller
     return redirect()->route('noticias.index')->with('success', 'Noticia creada exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $noticia = Noticia::findOrFail($id);
-        return view('noticias.show', compact('noticia'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit($id)
     {
         $noticia = Noticia::find($id);
@@ -82,28 +65,27 @@ class NoticiaController extends Controller
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $noticia = Noticia::find($id);
-        $noticia->tema = $request->input('tema');
-        $noticia->descripcion = $request->input('descripcion');
+        $noticias = Noticia::find($id);
+        $noticias->tema = $request->input('tema');
+        $noticias->descripcion = $request->input('descripcion');
 
         // Manejar la carga de la imagen si se proporciona
         if ($request->hasFile('imagen')) {
-            if ($noticia->imagen) {
-                unlink(public_path('images/'. $noticia->imagen));
+            if ($noticias->imagen) {
+                unlink(public_path('images/'. $noticias->imagen));
             }
             $fileName = time(). '.'. $request->imagen->extension();
             $request->imagen->move(public_path('images'), $fileName);
-            $noticia->imagen = $fileName;
+            $noticias->imagen = $fileName;
         }
 
-        $noticia->save();
+        $noticias->save();
 
+        // Redirigir a la vista de índice con un mensaje de éxito
         return redirect()->route('noticias.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $noticia = Noticia::find($id);

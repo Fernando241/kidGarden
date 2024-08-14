@@ -126,6 +126,12 @@ tbody tr:hover {
 
 /* Fin de Estilos para formulario */
 
+.areaText{
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #02cbda;
+    border-radius: 10px;
+}
 
 header{
     display: flex; /*Necesario para poder usar el justify-content*/
@@ -268,7 +274,7 @@ strong{ /*Para darle un formato distinto al título dentro del parrafo*/
     color: #fff;
     padding: 10px 30px;
     font-size: 15px;
-    text-align: ju; /*Alineación y justificación de texto*/
+    text-align: justify; /*Alineación y justificación de texto*/
 }
 /* estilo imagenes en pestañas */
 .imagen{
@@ -374,6 +380,7 @@ aside .pie {
 }
 
 
+
 @media (max-width: 1110px) {
     #videos{
         flex-direction: column; /*orientación vertical*/
@@ -415,3 +422,4 @@ aside .pie {
         display: inline-block; /*permite visualizar el boton menu ???*/
     }
 }
+
