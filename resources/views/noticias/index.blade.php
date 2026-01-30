@@ -45,7 +45,6 @@
                                     </div>
                                 @endcan <br>   
                             </div>
-                            
                         </div>
                     </div>
                 </div>

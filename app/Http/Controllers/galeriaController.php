@@ -31,12 +31,6 @@ class GaleriaController extends Controller
     {
         $galeria = Galeria::create($request->only('titulo', 'descripcion'));
 
-        /* if ($request->hasFile('fotos')) {
-            foreach ($request->file('fotos') as $fotos) {
-                $path = $fotos->store('fotos');
-                Foto::create(['galeria_id' => $galeria->id, 'ruta_fotos' => $path]);
-            }
-        } */
         if ($request->hasFile('fotos')) {
             foreach ($request->file('fotos') as $foto) {
                 $path = $foto->store('fotos', 'public');

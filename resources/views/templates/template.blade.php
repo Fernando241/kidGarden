@@ -91,7 +91,7 @@
         
     </div>
     <aside>
-        <p class="pie">Todos los derechos reservados para sige-web<br>Desarrollo y Diseño: Fernando Rolón <br> Jardín Infantil Genios del Saber<br>imagenes:www.freepik.es<br>2023</p>
+        <p class="pie">&copy; Todos los derechos reservados para sige-web<br>Desarrollo y Diseño: Fernando Rolón <br> Jardín Infantil Genios del Saber<br>imagenes:www.freepik.es<br>2023</p>
     </aside>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
     <script src="{{ asset('js/accion.js') }}"></script>
